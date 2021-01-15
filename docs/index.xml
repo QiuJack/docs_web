@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    <link>http://docs.pawpaw.ltd/docs/</link>
+    <description>Recent content in Docs on 木瓜电子 XMOS 麦克风阵列 评估板</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;{2020}, Pawpaw Ltd.,All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="http://docs.pawpaw.ltd/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>PXUA216MB-DL2</title>
+        <link>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/</link>
+        <pubDate>Thu, 14 Jan 2021 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>PXVF3000-KIT</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3000-kit/</link>
+        <pubDate>Tue, 10 Nov 2020 14:09:21 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3000-kit/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>P3510-2MIC</title>
+        <link>http://docs.pawpaw.ltd/docs/p3510-2mic/</link>
+        <pubDate>Sat, 11 Jan 2020 14:09:21 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/p3510-2mic/</guid>
+        <description></description>
+      </item>
+      
+      <item>
+        <title>PXVF3500-KIT</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3500-kit/</link>
+        <pubDate>Sat, 11 Jan 2020 14:09:21 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3500-kit/</guid>
+        <description>Coming soon</description>
+      </item>
+      
+    
+  </channel>
+</rss>

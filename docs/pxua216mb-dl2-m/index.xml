@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PXUA216MB-DL2 on 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    <link>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/</link>
+    <description>Recent content in PXUA216MB-DL2 on 木瓜电子 XMOS 麦克风阵列 评估板</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;{2020}, Pawpaw Ltd.,All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 14 Jan 2021 00:38:59 +0900</lastBuildDate>
+    
+        <atom:link href="http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>PXUA216MB-DL2-M_硬件使用</title>
+        <link>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/</link>
+        <pubDate>Thu, 14 Jan 2021 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/</guid>
+        <description>概要 PXUA216MB-DL2-M是基于XMOS XU216-512-TQ128-C主控设计的 USB 16路麦克风采集评估板，能够实现通过USB UAC 2.0协议实时地，同步地传输16路麦克风原始信号到操作系统端。往下兼容其他麦克风的任何数量麦克风采集。
+PXUA216MB-DL2-M评估板能够同步采集 16 路数字 MIC 信号以及 2 路回采信号，同时支持立体声播放，所有数据均通过 USB 进行传输，评估板主要提供给具备一定算法能力的声学企业以及个人使用。
+评估板USB UAC 2.0（USB Audio Class 2.0）协议兼容 Windows、Linux 和 Android 操作系统, 16个麦克风小板做分离式设计，可移动的，麦克风小板为底部拾音。灵活实现多种麦克风阵型布置需求。
+PXUA216MB-DL2-M评估板无内置任何麦克风阵列算法，主要功能为实时地，高一致性地传输16路麦克风原始信号。同时评估板集成了line-in和Line-out端子，通过USB传输16路麦克风+2路Line-in音轨，下行播放line-out 立体声播放。
+版本    产品版本 修改 发布时间     V1 初次发布 2017年10月20日   V2 修改了麦克风小板的尺寸 2018年9月25日    特点  USB UAC 2.0协议传输，作为外置声卡使用 16 PDM 数字麦克风，分离式设计，麦克风小板可以移动 支持 16KHz/48 KHz @16bit /24bit音频采样率， 支持 1 路Line-in模拟输入和1 路Line-out 模拟输出  规格   XMOS XU216主控</description>
+      </item>
+      
+    
+  </channel>
+</rss>

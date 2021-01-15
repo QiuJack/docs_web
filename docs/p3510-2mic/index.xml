@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>P3510-2MIC on 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    <link>http://docs.pawpaw.ltd/docs/p3510-2mic/</link>
+    <description>Recent content in P3510-2MIC on 木瓜电子 XMOS 麦克风阵列 评估板</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;{2020}, Pawpaw Ltd.,All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="http://docs.pawpaw.ltd/docs/p3510-2mic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>P3510-2MIC_硬件使用</title>
+        <link>http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/</guid>
+        <description>概要 P3510-2MIC是针对XMOS的XK-XVF3510-L71 开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-XVF3510-L71 开发板，所用的DSP芯片为XVF3510.pdf)。XMOS最新更新发布的XVF3510的UA固件完全适用于P3510-2MIC。
+P3510-2MIC为2麦阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（ASR，Automatic Speech Recognition ）和用于会议电话（Comms, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。
+P3510-2MIC内置了立体声回音消除（AEC） , 点噪消除（IC），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入语音产品中。
+版本    产品版本 修改 发布时间     P3510-2MIC V1 初次发布 2020年10月15日    特点   远距离拾音
+  支持USB Audio Class 1.0 (UAC 1.0)
+  支持USB HID 调试
+  2路麦克风阵列
+  支持3.5mm耳机孔作为模拟AEC参考信号
+  DSP 算法和特点
+· Voice Activity Detection(VAD)</description>
+      </item>
+      
+    
+  </channel>
+</rss>

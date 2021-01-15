@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具和应用下载 on 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    <link>http://docs.pawpaw.ltd/download/</link>
+    <description>Recent content in 工具和应用下载 on 木瓜电子 XMOS 麦克风阵列 评估板</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;{2020}, Pawpaw Ltd.,All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="http://docs.pawpaw.ltd/download/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>工具和应用下载</title>
+        <link>http://docs.pawpaw.ltd/download/%E5%B7%A5%E5%85%B7%E5%92%8C%E5%BA%94%E7%94%A8%E4%B8%8B%E8%BD%BD/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/download/%E5%B7%A5%E5%85%B7%E5%92%8C%E5%BA%94%E7%94%A8%E4%B8%8B%E8%BD%BD/</guid>
+        <description>PXVF3000-KIT
+.PXVF3000-KIT_硬件使用资料包.zip
+P3510-2MIC
+.P3510-2MIC_硬件使用资料包.zip
+PXVF3500-KIT
+Coming soon</description>
+      </item>
+      
+    
+  </channel>
+</rss>

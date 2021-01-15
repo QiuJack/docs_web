@@ -1,0 +1,2874 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>P3510-2MIC_硬件使用 – 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    
+
+
+  
+  <script defer src="/js/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
+
+
+
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+
+<script defer src="/js/lazysizes.min.31dd6a2d3a1ec0f78a8df007535cf23f03aeb5c70f026e6d6a19dac3b3acc340.js"></script>
+
+<script defer src="/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
+
+<script defer src="/js/helper/fadeinout.min.93a331f96194789a542f33690bbe4f0c102c7e78ffc018217f5a1c33010bad91.js"></script>
+
+<script>
+  "use strict";
+
+  window.onload = function() {
+    
+    var languagedir = JSON.parse("\"ltr\"");
+    
+    var baseurl = JSON.parse("\"http://docs.pawpaw.ltd/\"");
+    
+    var permalink = JSON.parse("\"http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/\"");
+
+    
+    var toggleSidebarElem = document.getElementById("toggle-sidebar");
+    var toggleMenuElem = document.getElementById("toggle-menu");
+    var tocBodyElem = document.querySelector('.toc__body');
+    var tocLabelElem = document.querySelector('.toc__label');
+    var listMainElem = document.getElementById('list-main');
+    var listSideElem = document.getElementById('list-side');
+    var singleMenuElem = document.getElementById('single-menu');
+    var sliderIcons = document.querySelectorAll('.slider__icon');
+
+    toggleSidebarElem ?
+      toggleSidebarElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (tocBodyElem) {
+            fadeIn(tocBodyElem, 200);
+          }
+          if (tocLabelElem) {
+            fadeIn(tocLabelElem, 200);
+          }
+          if (listMainElem && listSideElem) {
+            listMainElem.className = 'm';
+            listSideElem.className = 'r';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (tocBodyElem) {
+            fadeOut(tocBodyElem, 200);
+          }
+          if (tocLabelElem) {
+            fadeOut(tocLabelElem, 200);
+          }
+          if (listMainElem && listSideElem) {
+            listMainElem.className = 'mr';
+            listSideElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
+
+    toggleMenuElem ?
+      toggleMenuElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'm';
+            singleMenuElem.className = 'l';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'lm';
+            singleMenuElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
+    
+
+
+    
+    var navCollapseBtn = document.getElementById('navCollapseBtn');
+    navCollapseBtn ? navCollapseBtn.addEventListener('click', function(e) {
+      var navCollapse = document.querySelector('.navbar__collapse');
+      
+      if (navCollapse) {
+        var dataOpen = navCollapse.getAttribute('data-open');
+
+        if (dataOpen === 'true') {
+          navCollapse.setAttribute('data-open', 'false');
+          navCollapse.style.maxHeight = 0;
+        } else {
+          navCollapse.setAttribute('data-open', 'true');
+          navCollapse.style.maxHeight = navCollapse.scrollHeight + "px";
+        }
+      }
+    }) : null;
+    
+
+
+    
+    var expandBtn = document.querySelectorAll('.expand__button');
+
+    for (let i = 0; i < expandBtn.length; i++) {
+      expandBtn[i].addEventListener("click", function () {
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          this.querySelector('svg').classList.add('expand-icon__right');
+          this.querySelector('svg').classList.remove('expand-icon__down');
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          this.querySelector('svg').classList.remove('expand-icon__right');
+          this.querySelector('svg').classList.add('expand-icon__down');
+        }
+      });
+    }
+    
+
+
+
+    
+    document.querySelectorAll('.tab') ? 
+    document.querySelectorAll('.tab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var tabLinks = elem.querySelectorAll('.tab__link');
+      var tabContents = elem.querySelectorAll('.tab__content');
+      var ids = [];
+
+      tabLinks && tabLinks.length > 0 ?
+      tabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                tabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              tabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+
+    
+    document.querySelectorAll('.codetab') ? 
+    document.querySelectorAll('.codetab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var codetabLinks = elem.querySelectorAll('.codetab__link');
+      var codetabContents = elem.querySelectorAll('.codetab__content');
+      var ids = [];
+
+      codetabLinks && codetabLinks.length > 0 ?
+      codetabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                codetabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              codetabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+    
+    
+    
+    var enableDarkMode = JSON.parse("false");
+    var root = document.getElementById('root');
+    var toggleToLightBtn = document.getElementById('toggleToLight');
+    var toggleToDarkBtn = document.getElementById('toggleToDark');
+
+    if (!enableDarkMode) {
+      root.className = 'theme__light';
+      localStorage.setItem('theme', 'light');
+    }
+    
+    if (toggleToDarkBtn) {
+      toggleToDarkBtn.onclick = function (e) {
+        root.className = 'theme__dark';
+        localStorage.setItem('theme', 'dark');
+        toggleToLightBtn.className = 'navbar__icons--icon';
+        toggleToDarkBtn.className = 'hide';
+      }
+    }
+
+    if (toggleToLightBtn) {
+      toggleToLightBtn.onclick = function (e) {
+        root.className = 'theme__light';
+        localStorage.setItem('theme', 'light');
+        toggleToLightBtn.className = 'hide';
+        toggleToDarkBtn.className = 'navbar__icons--icon';
+      }
+    }
+
+    
+    document.querySelectorAll('.menu__list').forEach(function(elem) {
+      if (elem.classList.contains('active')) {
+        elem.style.maxHeight = elem.scrollHeight + "px"; 
+      }
+    });
+    
+    document.querySelectorAll('.menu__title--collapse').forEach(function(elem) {
+      elem.addEventListener('click', function (e) {
+        var content = this.nextElementSibling;
+        var menuTitleIcon = this.querySelector('.menu__title--icon');
+        if (!content) {
+          return null;
+        }
+
+        var parent = elem.parentNode;
+        while (parent.classList.contains('menu__list') && parent.classList.contains('active')) {
+          parent.style.maxHeight = 100 * parent.children.length + "px";
+          parent = parent.parentNode;
+        }
+
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          content.classList.remove('active');
+          menuTitleIcon.classList.add('right');
+          
+          if (languagedir === 'rtl') {
+            menuTitleIcon.classList.remove('downrtl');
+          } else {
+            menuTitleIcon.classList.remove('down');
+          }
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add('active');
+          menuTitleIcon.classList.remove('right');
+          
+          if (languagedir === 'rtl') {
+            menuTitleIcon.classList.add('downrtl');
+          } else {
+            menuTitleIcon.classList.add('down');
+          }
+        }
+      });
+    });
+    
+
+
+    
+    var mobileLogo = document.getElementById('mobileLogo');
+    var modal = document.getElementById("myModal");
+    var drawer = document.getElementById('myDrawer');
+    var drawerCloseBtn = document.querySelector('.drawer__close');
+
+    var openDrawer = function() {
+      modal.style.opacity = 1;
+
+      if (languagedir === 'rtl') {
+        modal.style.right = 0;
+        drawer.style.right = 0;
+      } else {
+        modal.style.left = 0;
+        drawer.style.left = 0;
+      }
+    }
+
+    var closeDrawer = function() {
+      modal.style.opacity = 0;
+
+      if (languagedir === 'rtl') {
+        drawer.style.right = '-100%';
+      } else {
+        drawer.style.left = '-100%';
+      }
+
+      
+      setTimeout(function () {
+        if (languagedir === 'rtl') {
+          modal.style.right = '-100%';
+        } else {
+          modal.style.left = '-100%';
+        }
+      }, 250);
+    }
+
+    mobileLogo.onclick = function () {
+      openDrawer();
+      localStorage.setItem('isDrawerOpen', 'true');
+    }
+
+    modal.onclick = function () {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+
+    drawerCloseBtn.onclick = function () {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+  
+
+
+  
+    var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var tocElem = document.querySelector('.toc');
+    var tableOfContentsElem = tocElem ? tocElem.querySelector('#TableOfContents') : null;
+    var singleContentsElem = document.querySelector('.single__contents');
+    var dataBGImgs = document.querySelectorAll('div[data-bgimg]');
+
+    
+    var tocLevels = JSON.parse("[\"h2\",\"h3\",\"h4\"]");
+
+    if (tocLevels) {
+      tocLevels = tocLevels.toString();
+    } else {
+      tocLevels = "h1, h2, h3, h4, h5, h6";
+    }
+
+    
+    var isLandingBgImg = JSON.parse("null");
+    
+    var isHome = JSON.parse("false");
+
+    function setNavbarBG(scrollTop) {
+      if (isHome && isLandingBgImg && Object.keys(isLandingBgImg).length) {
+        if (isLandingBgImg.height <= scrollTop) {
+          dataBGImgs.forEach(function(elem) {
+            elem.setAttribute('data-bgimg', 'false');
+          });
+        } else {
+          dataBGImgs.forEach(function (elem) {
+            elem.setAttribute('data-bgimg', 'true');
+          });
+        }
+      }
+    }
+    setNavbarBG(lastScrollTop);
+
+    window.onscroll = function () {
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) { 
+        singleContentsElem ? 
+        singleContentsElem.querySelectorAll(tocLevels.toString()).forEach(function(elem) {
+          if (document.documentElement.scrollTop >= elem.offsetTop) {
+            if (tableOfContentsElem) {
+              var id = elem.getAttribute('id');
+              tocElem.querySelectorAll('a').forEach(function (elem) {
+                elem.classList.remove('active');
+              });
+              tocElem.querySelector('a[href="#' + id + '"]') ? 
+              tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
+            }
+          }
+        }) : null;
+        setNavbarBG(st);
+      } else { 
+        singleContentsElem ? 
+        singleContentsElem.querySelectorAll(tocLevels.toString()).forEach(function(elem) {
+          if (document.documentElement.scrollTop >= elem.offsetTop) {
+            if (tableOfContentsElem) {
+              var id = elem.getAttribute('id');
+              tocElem.querySelectorAll('a').forEach(function (elem) {
+                elem.classList.remove('active');
+              });
+              tocElem.querySelector('a[href="#' + id + '"]') ? 
+              tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
+            }
+          }
+        }) : null;
+        setNavbarBG(st);
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    };
+    
+
+
+
+    
+    var mobileSearchInputElem = document.querySelector('#search-mobile');
+    var mobileSearchClassElem = document.querySelector('.mobile-search');
+    var mobileSearchBtnElem = document.querySelector('#mobileSearchBtn');
+    var mobileSearchCloseBtnElem = document.querySelector('#search-mobile-close');
+    var mobileSearchContainer = document.querySelector('#search-mobile-container');
+    var mobileSearchResultsElem = document.querySelector('#search-mobile-results');
+    var htmlElem = document.querySelector('html');
+
+    if (mobileSearchClassElem) {
+      mobileSearchClassElem.style.display = 'none';
+    }
+
+    mobileSearchBtnElem ? 
+    mobileSearchBtnElem.addEventListener('click', function () {
+      if (mobileSearchContainer) {
+        mobileSearchContainer.style.display = 'block';
+      }
+
+      if (mobileSearchInputElem) {
+        mobileSearchInputElem.focus();
+      }
+
+      if (htmlElem) {
+        htmlElem.style.overflowY = 'hidden';
+      }
+    }) : null;
+
+    mobileSearchCloseBtnElem ? 
+    mobileSearchCloseBtnElem.addEventListener('click', function() {
+      if (mobileSearchContainer) {
+        mobileSearchContainer.style.display = 'none';
+      }
+
+      if (mobileSearchInputElem) {
+        mobileSearchInputElem.value = '';
+      }
+      
+      if (mobileSearchResultsElem) {
+        while (mobileSearchResultsElem.firstChild) {
+          mobileSearchResultsElem.removeChild(mobileSearchResultsElem.firstChild);
+        }
+      }
+
+      if (htmlElem) {
+        htmlElem.style.overflowY = 'visible';
+      }
+    }) : null;
+
+    mobileSearchInputElem ? 
+    mobileSearchInputElem.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (mobileSearchContainer) {
+          mobileSearchContainer.style.display = 'none';
+        }
+        
+        if (mobileSearchInputElem) {
+          mobileSearchInputElem.value = '';
+        }
+
+        if (mobileSearchResultsElem) {
+          while (mobileSearchResultsElem.firstChild) {
+            mobileSearchResultsElem.removeChild(mobileSearchResultsElem.firstChild);
+          }
+        }
+        if (htmlElem) {
+          htmlElem.style.overflowY = 'visible';
+        }
+      }
+    }) : null;
+  
+
+
+  
+    var localTheme = localStorage.getItem('theme');
+    var rootEleme = document.getElementById('root');
+    var selectThemeElem = document.querySelectorAll('.select-theme');
+    var selectThemeItemElem = document.querySelectorAll('.select-theme__item');
+    
+    if (localTheme) {
+      selectThemeItemElem ? 
+      selectThemeItemElem.forEach(function (elem) {
+        if (elem.text.trim() === localTheme) {
+          elem.classList.add('is-active');
+        } else {
+          elem.classList.remove('is-active');
+        }
+      }) : null;
+    }
+
+    selectThemeItemElem ? 
+    selectThemeItemElem.forEach(function (v, i) {
+      v.addEventListener('click', function (e) {
+        var selectedThemeVariant = e.target.text.trim();
+        localStorage.setItem('theme', selectedThemeVariant);
+
+        rootEleme.removeAttribute('class');
+        rootEleme.classList.add(`theme__${selectedThemeVariant}`);
+        selectThemeElem.forEach(function(rootElem) {
+          rootElem.querySelectorAll('a').forEach(function (elem) {
+            if (elem.classList) {
+              if (elem.text.trim() === selectedThemeVariant) {
+                if (!elem.classList.contains('is-active')) {
+                  elem.classList.add('is-active');
+                }
+              } else {
+                if (elem.classList.contains('is-active')) {
+                  elem.classList.remove('is-active');
+                }
+              }
+            }
+          });
+        });
+
+        if (window.mermaid) {
+          if (selectedThemeVariant === "dark" || selectedThemeVariant === "hacker") {
+            mermaid.initialize({ theme: 'dark' });
+            location.reload();
+          } else {
+            mermaid.initialize({ theme: 'default' });
+            location.reload();
+          }
+        }
+
+        var utterances = document.querySelector('iframe');
+        if (utterances) {
+          utterances.contentWindow.postMessage({
+            type: 'set-theme',
+            theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
+          }, 'https://utteranc.es');
+        }
+      });
+    }) : null;
+  
+
+
+  
+    
+    var langprefix = JSON.parse("\"\"");
+    var searchResults = null;
+    var searchMenu = null;
+    var searchText = null;
+    
+    
+    var enableSearchHighlight = JSON.parse("true");
+    
+    var enableSearch = JSON.parse("true");
+
+    var fuse = null;
+
+    if (enableSearch) {
+      (function initFuse() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', baseurl + langprefix + "/index.json");
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
+              keys: ['title', 'description', 'content'],
+              includeMatches: enableSearchHighlight,
+              shouldSort: true,
+              threshold: 0.4,
+              location: 0,
+              distance: 100,
+              maxPatternLength: 32,
+              minMatchCharLength: 1,
+            });
+          }
+          else {
+            console.error(`[${xhr.status}]Error:`, xhr.statusText);
+          }
+        };
+        xhr.send();
+      })();
+    }
+    
+    function makeLi(ulElem, obj) {
+      var li = document.createElement('li');
+      li.className = 'search-result__item';
+      
+      var a = document.createElement('a');
+      a.innerHTML = obj.title;
+      a.setAttribute('class', 'search-result__item--title');
+      a.setAttribute('href', obj.permalink);
+
+      var descDiv = document.createElement('div');
+      descDiv.setAttribute('class', 'search-result__item--desc');
+      if (obj.description) {
+        descDiv.innerHTML = obj.description;
+      } else if (obj.content) {
+        descDiv.innerHTML = obj.content.substring(0, 80);
+      }
+      
+      li.appendChild(a);
+      li.appendChild(descDiv);
+      ulElem.appendChild(li);
+    }
+
+    function makeHighlightLi(ulElem, obj) {
+      var li = document.createElement('li');
+      li.className = 'search-result__item';
+      var descDiv = null;
+
+      var a = document.createElement('a');
+      a.innerHTML = obj.item.title;
+      a.setAttribute('class', 'search-result__item--title');
+      a.setAttribute('href', obj.item.uri);
+
+      if (obj.matches && obj.matches.length) {
+        for (var i = 0; i < obj.matches.length; i++) {
+          if ('title' === obj.matches[i].key) {
+            a = document.createElement('a');
+            a.innerHTML = generateHighlightedText(obj.matches[i].value, obj.matches[i].indices);
+            a.setAttribute('class', 'search-result__item--title');
+            a.setAttribute('href', obj.item.uri);
+          }
+          
+          if ('description' === obj.matches[i].key) {
+            descDiv = document.createElement('div');
+            descDiv.setAttribute('class', 'search-result__item--desc');
+            descDiv.innerHTML = generateHighlightedText(obj.item.description, obj.matches[i].indices);
+          } else if ('content' === obj.matches[i].key) {
+            if (!descDiv) {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = generateHighlightedText(obj.item.content.substring(0, 80), obj.matches[i].indices);
+            }
+          } else {
+            if (obj.item.description) {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = obj.item.description;
+            } else {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = obj.item.content.substring(0, 80);
+            }
+          }
+        }
+
+        li.appendChild(a);
+        if (descDiv) {
+          li.appendChild(descDiv);
+        }
+        if (li) {
+          ulElem.appendChild(li);
+        }
+      }
+    }
+
+    function renderSearchResults(searchText, results) {
+      searchResults = document.getElementById('search-results');
+      searchMenu = document.getElementById('search-menu');
+      searchResults.setAttribute('class', 'dd is-active');
+      
+      var ul = document.createElement('ul');
+      ul.setAttribute('class', 'dd-content search-content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.setAttribute('href', result.uri);
+          a.setAttribute('class', 'dd-item');
+          a.appendChild(li);
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.title;
+          titleDiv.setAttribute('class', 'search-result__item--title');
+
+          var descDiv = document.createElement('div');
+          descDiv.setAttribute('class', 'search-result__item--desc');
+          if (result.description) {
+            descDiv.innerHTML = result.description;
+          } else if (result.content) {
+            descDiv.innerHTML = result.content.substring(0, 80);
+          }
+
+          li.appendChild(titleDiv);
+          li.appendChild(descDiv);
+          ul.appendChild(a);
+        });
+      } else {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'dd-item');
+        li.innerText = 'No results found';
+        ul.appendChild(li);
+      }
+
+      while (searchMenu.hasChildNodes()) {
+        searchMenu.removeChild(
+          searchMenu.lastChild
+        );
+      }
+      
+      searchMenu.appendChild(ul);
+    }
+
+    function renderSearchHighlightResults(searchText, results) {
+      searchResults = document.getElementById('search-results');
+      searchMenu = document.getElementById('search-menu');
+      searchResults.setAttribute('class', 'dd is-active');
+
+      var ul = document.createElement('ul');
+      ul.setAttribute('class', 'dd-content search-content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var descDiv = null;
+
+          a.setAttribute('href', result.item.uri);
+          a.setAttribute('class', 'dd-item');
+          a.appendChild(li);
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.item.title;
+          titleDiv.setAttribute('class', 'search-result__item--title');
+          
+          if (result.matches && result.matches.length) {
+            for (var i = 0; i < result.matches.length; i++) {
+              if ('title' === result.matches[i].key) {
+                titleDiv.innerHTML = generateHighlightedText(result.matches[i].value, result.matches[i].indices);
+              }
+
+              if ('description' === result.matches[i].key) {
+                descDiv = document.createElement('div');
+                descDiv.setAttribute('class', 'search-result__item--desc');
+                descDiv.innerHTML = generateHighlightedText(result.item.description, result.matches[i].indices);
+              } else if ('content' === result.matches[i].key) {
+                if (!descDiv) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = generateHighlightedText(result.item.content.substring(0, 80), result.matches[i].indices);
+                }
+              } else {
+                if (result.item.description) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = result.item.description;
+                } else {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = result.item.content.substring(0, 80);
+                }
+              }
+            }
+            
+            li.appendChild(titleDiv);
+            if (descDiv) {
+              li.appendChild(descDiv);
+            }
+            ul.appendChild(a);
+          }
+        });
+      } else {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'dd-item');
+        li.innerText = 'No results found';
+        ul.appendChild(li);
+      }
+
+      while (searchMenu.hasChildNodes()) {
+        searchMenu.removeChild(
+          searchMenu.lastChild
+        );
+      }
+      searchMenu.appendChild(ul);
+    }
+
+    function renderSearchResultsMobile(searchText, results) {
+      searchResults = document.getElementById('search-mobile-results');
+
+      var content = document.createElement('div');
+      content.setAttribute('class', 'mobile-search__content');
+
+      if (results.length > 0) {
+        results.forEach(function (result) {
+          var item = document.createElement('a');
+          item.setAttribute('href', result.uri);
+          item.innerHTML = '<div class="mobile-search__item"><div class="mobile-search__item--title">📄 ' + result.title + '</div><div class="mobile-search__item--desc">' + (result.description ? result.description : result.content) + '</div></div>';
+          content.appendChild(item);
+        });
+      } else {
+        var item = document.createElement('span');
+        content.appendChild(item);
+      }
+
+      let wrap = document.getElementById('search-mobile-results');
+      while (wrap.firstChild) {
+        wrap.removeChild(wrap.firstChild)
+      }
+      searchResults.appendChild(content);      
+    }
+
+    function renderSearchHighlightResultsMobile(searchText, results) {
+      searchResults = document.getElementById('search-mobile-results');
+
+      var ul = document.createElement('div');
+      ul.setAttribute('class', 'mobile-search__content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var descDiv = null;
+
+          a.setAttribute('href', result.item.uri);
+          a.appendChild(li);
+          li.setAttribute('class', 'mobile-search__item');
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.item.title;
+          titleDiv.setAttribute('class', 'mobile-search__item--title');
+          
+          if (result.matches && result.matches.length) {
+            for (var i = 0; i < result.matches.length; i++) {
+              if ('title' === result.matches[i].key) {
+                titleDiv.innerHTML = generateHighlightedText(result.matches[i].value, result.matches[i].indices);
+              }
+
+              if ('description' === result.matches[i].key) {
+                descDiv = document.createElement('div');
+                descDiv.setAttribute('class', 'mobile-search__item--desc');
+                descDiv.innerHTML = generateHighlightedText(result.item.description, result.matches[i].indices);
+              } else if ('content' === result.matches[i].key) {
+                if (!descDiv) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = generateHighlightedText(result.item.content.substring(0, 150), result.matches[i].indices);
+                }
+              } else {
+                if (result.item.description) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = result.item.description;
+                } else {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = result.item.content.substring(0, 150);
+                }
+              }
+            }
+            
+            li.appendChild(titleDiv);
+            if (descDiv) {
+              li.appendChild(descDiv);
+            }
+            ul.appendChild(a);
+          }
+        });
+      } else {
+        var item = document.createElement('span');
+        ul.appendChild(item);
+      }
+
+      let wrap = document.getElementById('search-mobile-results');
+      while (wrap.firstChild) {
+        wrap.removeChild(wrap.firstChild)
+      }
+      searchResults.appendChild(ul);
+    }
+
+    function generateHighlightedText(text, regions) {
+      if (!regions) {
+        return text;
+      }
+
+      var content = '', nextUnhighlightedRegionStartingIndex = 0;
+
+      regions.forEach(function(region) {
+        if (region[0] === region[1]) {
+          return null;
+        }
+        
+        content += '' +
+          text.substring(nextUnhighlightedRegionStartingIndex, region[0]) +
+          '<span class="search__highlight">' +
+            text.substring(region[0], region[1] + 1) +
+          '</span>' +
+        '';
+        nextUnhighlightedRegionStartingIndex = region[1] + 1;
+      });
+
+      content += text.substring(nextUnhighlightedRegionStartingIndex);
+
+      return content;
+    };
+
+    var searchElem = document.getElementById('search');
+    var searchMobile = document.getElementById('search-mobile');
+    var searchResultsContainer = document.getElementById('search-results');
+
+    searchElem ? 
+    searchElem.addEventListener('input', function(e) {
+      if (!e.target.value | window.innerWidth < 770) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      if (enableSearchHighlight) {
+        renderSearchHighlightResults(searchText, results);
+      } else {
+        renderSearchResults(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+
+    searchElem ? 
+    searchElem.addEventListener('blur', function() {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+      searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+    }) : null;
+
+    searchElem ? 
+    searchElem.addEventListener('click', function(e) {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+      if (!e.target.value) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      if (enableSearchHighlight) {
+        renderSearchHighlightResults(searchText, results);
+      } else {
+        renderSearchResults(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+
+    var searchMenuElem = document.getElementById("search-menu");
+    var activeItem = document.querySelector('#search-menu .dd-item.is-active');
+    var activeIndex = null;
+    var items = null;
+    var searchContainerMaxHeight = 350;
+
+    searchElem ? 
+    searchElem.addEventListener('keydown', function(e) {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+
+      var items = document.querySelectorAll('#search-menu .dd-item');
+      
+      if (e.key === 'ArrowDown') {
+        if (activeIndex === null) {
+          activeIndex = 0;
+          items[activeIndex].classList.remove('is-active');
+        } else {
+          items[activeIndex].classList.remove('is-active');
+          activeIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+        }
+        items[activeIndex].classList.add('is-active');
+
+        let overflowedPixel = items[activeIndex].offsetTop + items[activeIndex].clientHeight - searchContainerMaxHeight;
+        if (overflowedPixel > 0) {
+          document.querySelector(".search-content").scrollTop += items[activeIndex].getBoundingClientRect().height;
+        } else if (activeIndex === 0) {
+          document.querySelector(".search-content").scrollTop = 0;
+        }
+      } else if (e.key === 'ArrowUp') {
+        if (activeIndex === null) {
+          activeIndex = items.length - 1;
+          items[activeIndex].classList.remove('is-active');
+        } else {
+          items[activeIndex].classList.remove('is-active');
+          activeIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+        }
+        items[activeIndex].classList.add('is-active');
+        
+        let overflowedPixel = items[activeIndex].offsetTop + items[activeIndex].clientHeight - searchContainerMaxHeight;
+        if (overflowedPixel < 0) {
+          document.querySelector(".search-content").scrollTop -= items[activeIndex].getBoundingClientRect().height;
+        } else {
+          document.querySelector(".search-content").scrollTop = overflowedPixel + items[activeIndex].getBoundingClientRect().height;
+        }
+      } else if (e.key === 'Enter') {
+        var currentItemLink = items[activeIndex].getAttribute('href');
+        if (currentItemLink) {
+          location.href = currentItemLink;
+        }
+      } else if (e.key === 'Escape') {
+        e.target.value = null;
+        if (searchResults) {
+          searchResults.classList.remove('is-active');
+        }
+      }
+    }) : null;
+
+    searchMobile ? 
+    searchMobile.addEventListener('input', function(e) {
+      if (!e.target.value) {
+        let wrap = document.getElementById('search-mobile-results');
+        while (wrap.firstChild) {
+          wrap.removeChild(wrap.firstChild);
+        }
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+      
+      if (enableSearchHighlight) {
+        renderSearchHighlightResultsMobile(searchText, results);
+      } else {
+        renderSearchResultsMobile(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+  
+  }
+</script>
+    
+
+
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    <meta name="description" content="" />
+<meta name="keywords" content="">
+<meta name="created" content="2020-01-28T00:38:59&#43;0900">
+<meta name="modified" content="2020-01-28T00:38:59&#43;0900">
+
+
+<meta property="og:site_name" content="木瓜电子 XMOS 麦克风阵列 评估板">
+<meta property="og:title" content="P3510-2MIC_硬件使用">
+<meta property="og:url" content="http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.78.1" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/">
+<link rel="manifest" href="/manifest.json">
+
+
+  <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon/favicon.ico"type="image/x-icon">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "P3510-2MIC_硬件使用",
+    "datePublished": "2020-01-28T00:38:59+09:00",
+    "dateModified": "2020-01-28T00:38:59+09:00",
+    "url" : "http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/",
+    "description": "概要 P3510-2MIC是针对XMOS的XK-XVF3510-L71 开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-XVF3510-L71 开发板，所用的DSP芯片为XVF3510.pdf)。XMOS最新更新发布的XVF3510的UA固件完全适用于P3510-2MIC。 …",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://docs.pawpaw.ltd/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "木瓜电子 XMOS 麦克风阵列 评估板",
+      "url": "http://docs.pawpaw.ltd/"
+    }
+  }
+</script>
+
+    
+
+</head>
+
+
+<body id="root" class="theme__light">
+    <script>
+        var rootElem = document.getElementById('root');
+        var themeOptions = JSON.parse("[\"light\"]");
+        var localTheme = localStorage.getItem('theme');
+
+        if (localTheme) {
+            if (themeOptions && themeOptions.length > 0) {
+                themeOptions.includes(localTheme) ? 
+                rootElem.className = `theme__${localTheme}` :
+                rootElem.className = `theme__${themeOptions[0]}`;
+            }
+        }
+    </script>
+    
+    <div id="container">
+        <div id="myDrawer" class="drawer" style="">
+  <div class="drawer__header">
+    <a href="/" class="drawer__header--text">
+       Pawpaw 木瓜电子 | beta
+    </a>
+    <div class="grow"></div>
+    <div class="drawer__close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
+    </div>
+  </div>
+
+  <div class="drawer__body">
+    <div class="menu">
+  <h6 class="menu__label">
+    
+      P3510-2MIC_硬件使用
+    
+  </h6>
+  <ul>
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/">
+    <span class="menu__title--collapse-text">
+      PXUA216MB-DL2
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxua216mb-dl2-m/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/" class="menu__title " data-depth="0">PXUA216MB-DL2-M_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/pxvf3000-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3000-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxvf3000-kit/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_usage/" class="menu__title " data-depth="0">PXVF3000-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/" class="menu__title " data-depth="0">XVF3000硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/" class="menu__title " data-depth="0">XVF3000项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3000-KIT_dsp_描述</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse active" data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/p3510-2mic/">
+    <span class="menu__title--collapse-text">
+      P3510-2MIC
+    </span>
+    <span class="menu__title--icon down">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list active" data-data=/p3510-2mic/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/" class="menu__title active" data-depth="0">P3510-2MIC_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/pxvf3500-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3500-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxvf3500-kit/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/" class="menu__title " data-depth="0">XVF3500项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3500-KIT_dsp_描述</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/" class="menu__title " data-depth="0">PXVF3500-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/" class="menu__title " data-depth="0">XVF3500硬件设计</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+  </ul>
+</div>
+
+
+
+<script>
+  var menuTitle = document.querySelectorAll('.menu__title');
+  var modal = document.getElementById("myModal");
+  var drawer = document.getElementById('myDrawer');
+
+  var closeDrawer = function () {
+    setTimeout(function () {
+      modal.style.opacity = 0;
+      drawer.style.left = '-100%';
+      modal.style.left = '-100%';
+    }, 250);
+  }
+
+  menuTitle ? 
+  menuTitle.forEach(function(elem) {
+    elem.onclick = function() {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+  }) : null;
+</script>
+  </div>
+</div>
+<div id="myModal" class="modal" style=""></div>
+
+<script>
+  var isDrawerOpen = localStorage.getItem('isDrawerOpen');
+  var modal = document.getElementById("myModal");
+  var drawer = document.getElementById('myDrawer');
+  
+  
+  var languagedir = JSON.parse("\"ltr\"");
+
+  var openDrawer = function () {
+    modal.style.opacity = 1;
+    
+    if (languagedir === "rtl") {
+      modal.style.right = 0;
+      drawer.style.right = 0;
+    } else {
+      modal.style.left = 0;
+      drawer.style.left = 0;
+    }
+  }
+
+  if (isDrawerOpen && isDrawerOpen === 'true') {
+    openDrawer();
+  }
+</script>
+        
+<nav class="nav">
+  <div class="navbar__wrapper" data-bgimg="false">
+    <div class="divider">
+      <div class="navbar lmr">
+        <div id="siteLogo" class="navbar__logo--wrapper">
+  
+    <a href="/" title="" rel="home" class="navbar__logo--link">
+      <img src="/logo.png" alt="Home" class="navbar__logo">
+    </a>
+  
+  
+    <a href="/" title="" rel="home" class="navbar__logo--text-link">
+      <h6 class="navbar__logo--text" data-bgimg="false"> Pawpaw 木瓜电子 | beta</h6>
+    </a>
+  
+</div>
+        
+        <div class="navbar__menu--wrapper">
+          <div id="tabletLogo" class="hide">
+  
+  <a href="/" rel="home" class="navbar__logo--link">
+    <img src="/logo.png" alt="Home" class="navbar__logo">
+  </a>
+  
+</div>
+          <div id="mobileLogo" class="hide">
+  <a href="#" class="navbar__logo--link">
+    <div class="navbar__icons--icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/></svg>
+    </div>
+  </a>
+</div>
+          <span id="navMenuMobile" class="hide">
+  <button id="navCollapseBtn" class="navbar__dropdown--title" aria-label="Section Menu" data-dir="ltr">
+    
+      docs
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"/></svg>
+  </button>
+  <div class="navbar__collapse" data-open="false">
+  <ul>
+    
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item active">
+    <a href="/docs" class="active">文档</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/download" class="">下载</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/about" class="">关于</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/notes" class="">笔记</a>
+  </li>
+
+  </ul>
+</div>
+</span>
+          <ul id="navMenu" class="navbar__menu">
+            
+
+  
+  
+  
+  
+  <li class="navbar__menu--item active">
+    <a href="/docs" data-bgimg="false">文档</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/download" data-bgimg="false">下载</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/about" data-bgimg="false">关于</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/notes" data-bgimg="false">笔记</a>
+  </li>
+
+          </ul>
+        </div>
+        <div class="grow"></div>
+        <div id="siteSearch">
+          
+
+<div class="search" data-bgimg="false">
+  <span class="icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </span>
+  <input id="search" aria-label="Site Search" class="input" type="text" autocomplete="off" placeholder="Search">
+  <div id="search-results" class="dropdown">
+    <div id="search-menu" class="dropdown-menu">
+    </div>
+  </div>
+</div>
+
+
+        </div>
+        <div id="mobileSearch" class="hide">
+          
+<div id="mobileSearchBtn" class="mobile-search__btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+</div>
+
+<div id="search-mobile-container" class="mobile-search hide">
+  <div class="mobile-search__top">
+    <input id="search-mobile" type="text" aria-label="Mobile Search" placeholder="Search..." class="mobile-search__top--input"/>
+    <div id="search-mobile-close" class="mobile-search__top--icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path opacity=".87" fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg>
+    </div>
+  </div>
+  <div id="search-mobile-results" class="mobile-search__body">
+    
+  </div>
+</div>
+
+        </div>
+        <div class="navbar__icons">
+  
+<div class="dropdown">
+  <button class="lang__dropdown navbar__icons--icon" aria-label="Select Site Language">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12.65 15.67c.14-.36.05-.77-.23-1.05l-2.09-2.06.03-.03c1.74-1.94 2.98-4.17 3.71-6.53h1.94c.54 0 .99-.45.99-.99v-.02c0-.54-.45-.99-.99-.99H10V3c0-.55-.45-1-1-1s-1 .45-1 1v1H1.99c-.54 0-.99.45-.99.99 0 .55.45.99.99.99h10.18C11.5 7.92 10.44 9.75 9 11.35c-.81-.89-1.49-1.86-2.06-2.88-.16-.29-.45-.47-.78-.47-.69 0-1.13.75-.79 1.35.63 1.13 1.4 2.21 2.3 3.21L3.3 16.87c-.4.39-.4 1.03 0 1.42.39.39 1.02.39 1.42 0L9 14l2.02 2.02c.51.51 1.38.32 1.63-.35zM17.5 10c-.6 0-1.14.37-1.35.94l-3.67 9.8c-.24.61.22 1.26.87 1.26.39 0 .74-.24.88-.61l.89-2.39h4.75l.9 2.39c.14.36.49.61.88.61.65 0 1.11-.65.88-1.26l-3.67-9.8c-.22-.57-.76-.94-1.36-.94zm-1.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+  </button>
+  <div class="dropdown-content lang__dropdown--content">
+    
+    
+    
+      
+      
+        
+        
+          
+            
+              <a href="http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/" data-lang="zh-cn" class="lang__dropdown--item active">中文</a>
+            
+          
+        
+      
+        
+      
+    
+  </div>
+</div>
+
+  
+  <div class="navbar__icons--icon">
+    <a href="http://www.pawpaw.hk/" title="Pawpaw web" aria-label="Pawpaw web" target="_blank" rel="noreferrer" >
+    <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+ 
+ <g>
+  <title>Pawpaw web</title>
+  <rect fill="#fff" id="canvas_background" height="24" width="24" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Pawpaw web</title>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="8.87098" x2="0.87646" y1="0.66374" x1="11.44819" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="8.02822" x2="21.36775" y1="1.07171" x1="10.4982" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="19.57675" x2="5.67393" y1="8.27242" x1="5.67393" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="20.22893" x2="13.93478" y1="4.35938" x1="13.93478" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="19.57675" x2="23.2826" y1="19.57675" x1="0.02176" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="11.75068" x2="18.71739" y1="11.75068" x1="14.15218" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+ </g>
+</svg>
+    </a>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  var siteLogo = document.getElementById('siteLogo');
+  var tabletLogo = document.getElementById('tabletLogo');
+  var mobileLogo = document.getElementById('mobileLogo');
+  var navMenu = document.getElementById('navMenu');
+  var navMenuMobile = document.getElementById('navMenuMobile');
+  var siteSearch = document.getElementById('siteSearch');
+  var mobileSearch = document.getElementById('mobileSearch');
+  
+  enquire.register("screen and (max-width:1280px)", {
+    match: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+    unmatch: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+  }).register("screen and (max-width:960px)", {
+    match: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = '';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+    unmatch: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+  }).register("screen and (max-width:600px)", {
+    match: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = '';
+      navMenu.className = 'hide';
+      navMenuMobile.className = '';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+    unmatch: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = '';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+  });
+</script>
+
+        
+  <div class="top">
+  <div class="header__wrapper bgcolor__header">
+    <div class="divider">
+      <div class="lmr">
+        <h2 class="title">P3510-2MIC_硬件使用</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__wrapper bgcolor__breadcrumb">
+    <div class="divider">
+      <div class="lmr flexbox">
+        
+          <nav class="breadcrumb" aria-label="breadcrumbs" data-is-blog="false">
+  
+  <ol>
+    
+  
+  
+  
+  
+  
+  
+  
+  <li >
+    
+      <a href="http://docs.pawpaw.ltd/" class="capitalize">木瓜电子</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="http://docs.pawpaw.ltd/docs/" class="capitalize">Docs</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="http://docs.pawpaw.ltd/docs/p3510-2mic/" class="capitalize">P3510-2MIC</a>
+    
+  </li>
+  
+  
+  <li  class="is-active" >
+    
+      <span>P3510-2MIC_硬件使用</span>
+    
+  </li>
+  
+  </ol>
+  
+</nav>
+        
+        <div class="grow"></div>
+        
+  <label class="switch switch__rel">
+    
+      <input id="toggle-sidebar" aria-label="Toggle Sidebar Visibility" type="checkbox" checked />
+      <span class="slider">
+        <span class="slider__icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </span>
+        <span class="slider__icon hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </span>
+      </span>
+    
+    
+  </label>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+  
+
+<div class="mid">
+  <div class="divider">
+    
+    <nav id="single-menu" class="l" data-dir="ltr">
+      
+        <div class="menu">
+  <h6 class="menu__label">
+    
+      P3510-2MIC_硬件使用
+    
+  </h6>
+  <ul>
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/">
+    <span class="menu__title--collapse-text">
+      PXUA216MB-DL2
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxua216mb-dl2-m/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/" class="menu__title " data-depth="0">PXUA216MB-DL2-M_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/pxvf3000-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3000-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxvf3000-kit/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_usage/" class="menu__title " data-depth="0">PXVF3000-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/" class="menu__title " data-depth="0">XVF3000硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/" class="menu__title " data-depth="0">XVF3000项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3000-KIT_dsp_描述</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse active" data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/p3510-2mic/">
+    <span class="menu__title--collapse-text">
+      P3510-2MIC
+    </span>
+    <span class="menu__title--icon down">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list active" data-data=/p3510-2mic/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/" class="menu__title active" data-depth="0">P3510-2MIC_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="http://docs.pawpaw.ltd/docs/pxvf3500-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3500-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxvf3500-kit/ data-link=http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/>
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/" class="menu__title " data-depth="0">XVF3500项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3500-KIT_dsp_描述</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/" class="menu__title " data-depth="0">PXVF3500-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/" class="menu__title " data-depth="0">XVF3500硬件设计</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+  </ul>
+</div>
+
+
+      
+    </nav>
+
+    <article id="list-main" class="m" data-dir="ltr">
+      <div class="single" data-display="block">
+  
+
+  <article class="single__contents" data-dir="ltr">
+    <h2 id="概要">概要</h2>
+<p><p class="md__image">
+  <img src="/p3510/img/P3510-2MIC_original.png" alt=""  />
+</p></p>
+<p>P3510-2MIC是针对XMOS的<a href="https://www.xmos.ai/vocalfusion-voice-interfaces/" target="_blank">XK-XVF3510-L71 </a>开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的<a href="https://www.xmos.ai/vocalfusion-voice-interfaces/" target="_blank">XK-XVF3510-L71 </a>开发板，所用的DSP芯片为<a href="https://www.xmos.ai/download/XVF3510-UA-Datasheet%284.1" target="_blank">XVF3510</a>.pdf)。XMOS最新更新发布的XVF3510的UA固件完全适用于P3510-2MIC。</p>
+<p>P3510-2MIC为2麦阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（<strong>ASR</strong>，Automatic Speech Recognition ）和用于会议电话（<strong>Comms</strong>, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。</p>
+<p>P3510-2MIC内置了立体声回音消除（AEC） , 点噪消除（IC），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入语音产品中。</p>
+<h2 id="版本">版本</h2>
+<table>
+<thead>
+<tr>
+<th>产品版本</th>
+<th>修改</th>
+<th>发布时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P3510-2MIC  V1</td>
+<td>初次发布</td>
+<td>2020年10月15日</td>
+</tr>
+</tbody>
+</table>
+<h2 id="特点">特点</h2>
+<ul>
+<li>
+<p>远距离拾音</p>
+</li>
+<li>
+<p>支持USB Audio Class 1.0 (UAC 1.0)</p>
+</li>
+<li>
+<p>支持USB HID 调试</p>
+</li>
+<li>
+<p>2路麦克风阵列</p>
+</li>
+<li>
+<p>支持3.5mm耳机孔作为模拟AEC参考信号</p>
+</li>
+<li>
+<p>DSP 算法和特点</p>
+<p>·    Voice Activity Detection(VAD)</p>
+<p>·    Full duplex, stereo, Acoustic Echo Cancellation(AEC)</p>
+<p>·    The Automatic Delay Estimation Control (ADEC)</p>
+<p>·    Interference Cancellation (IC)</p>
+<p>·    Noise Suppression (NS)</p>
+<p>·    Automatic Gain Control (AGC)</p>
+</li>
+</ul>
+<h2 id="规格">规格</h2>
+<ul>
+<li>
+<p>XMOS XVF3510 主控，内置2麦阵列算法</p>
+</li>
+<li>
+<p>2路PDM 数字麦克风：MSM261D4030H1AP</p>
+<p>·     Sensitivity: -26 dBFS (Omnidirectional)</p>
+<p>·     Acoustic overload point: 120 dBSPL</p>
+<p>·     SNR: 64 dBA</p>
+</li>
+<li>
+<p>供电：USB 5V 或者FPC 端子</p>
+</li>
+<li>
+<p>尺寸：90mmx18mm</p>
+</li>
+<li>
+<p>模拟AEC参考信号输入</p>
+<p>·     ADC: AKM AK5720</p>
+<p>·     3.5mm耳机孔</p>
+</li>
+<li>
+<p>音频传输：</p>
+<p>·     USB UAC 1.0 输入输出，AEC可选使用3.5mm耳机孔模拟输入</p>
+<p>·     采样率：16KHz/48KHz（默认）</p>
+</li>
+<li>
+<p>功耗: 5V, 130mA （Max）</p>
+</li>
+</ul>
+<h2 id="硬件概述">硬件概述</h2>
+<p><p class="md__image">
+  <img src="/p3510/img/P3510-2MIC_HW_overview.png" alt=""  />
+</p></p>
+<ul>
+<li>XMOS DSP ：XVF3510 主控，集成了UAC1.0和2MIC阵列算法，包含了立体声回音消除（AEC） , 点噪消除（IC），噪声抑制（NS）和自动增益（AGC）算法</li>
+<li>Micro USB :   提供5V电源，并且传输音频和固件更新，调试</li>
+<li>ADC AK5720：外接AEC模拟参考信号时，通过I2S传输参考信号给XVF3510(如果AEC 参考信号不是通过USB提供时使用)</li>
+<li>Flash AT25SF161:存储XVF3510的固件及数据分区</li>
+<li>FPC Header: 作为代替了Micro USB端子选项，10Pin，包含了USB引脚，AEC Ref. ，Mute，Reset等。如使用了Micro USB连接操作系统，则无需使用FPC Header</li>
+</ul>
+<h3 id="系统连接框图">系统连接框图</h3>
+<p><p class="md__image">
+  <img src="/p3510/img/P3510-2MIC_HW_link.png" alt=""  />
+</p></p>
+<h3 id="引脚映射">引脚映射</h3>
+<p><p class="md__image">
+  <img src="/p3510/img/P3510-2MIC_pin_map.png" alt=""  />
+</p></p>
+<p>FPC Header一般使用不上，因为已经有了Micro USB端子和3.5mm耳机输入端子，FPC Header作为高级选项使用，以便代替Micro USB端子和3.5mm耳机端子，以及要用到Mute和RST时使用</p>
+<p>XMOS JTAG一般使用不上，因为用户需要购买拥有XMOS 专用调试工具XTAG3，且在需要深入开发XVF3510内部固件及factocy烧录时使用</p>
+<h3 id="尺寸">尺寸</h3>
+<p><p class="md__image">
+  <img src="/p3510/img/P3510-2MIC_HW_size_up.png" alt=""  />
+</p></p>
+<p><p class="md__image">
+  <img src="/p3510/img/P3510-2MIC_HW_size_front.png" alt=""  />
+</p></p>
+<h2 id="应用场合">应用场合</h2>
+<ul>
+<li>导航机器人（ASR）</li>
+<li>医疗设备（ASR）</li>
+<li>健身设备（ASR）</li>
+<li>大屏广告机（ASR）</li>
+<li>授课直播（Comms）</li>
+<li>摄像头麦克风（Comms）</li>
+</ul>
+<h2 id="开始">开始</h2>
+<h3 id="第一个demo">第一个Demo</h3>
+<p>通常情况下，用户拿到P3510-2MIC PCBA板后，建议先在Windows系统做初步认证。使用Micro USB 数据线来连接P3510-2MIC和Windows系统电脑，需要做初步设置和确认。</p>
+<h4 id="声卡设备设置">声卡设备设置</h4>
+<p>确认Windows设备管理器已经成功枚举了P3510-2MIC，并且打开声音控制面板进行设置</p>
+<p><p class="md__image">
+  <img src="/p3510/img/System_device_manage_pannel.png" alt=""  />
+</p></p>
+<p><p class="md__image">
+  <img src="/p3510/img/system_Soundcar_setting.png" alt=""  />
+</p></p>
+<div class="alert alert-warning" role="alert" data-dir="ltr"><p><strong>如</strong>果没有录制-&gt;立体声混音，可以升级一下声卡驱动，在录制栏目，选择显示禁用的设备；右击立体声混音；选择启用</p>
+<p>由于P3510-2MIC没有播放输出的3.5mm耳机孔，需要将操作系统的默认声卡作为播放输出声卡设备</p>
+</div>
+<h4 id="录制和demo">录制和Demo</h4>
+<p>使用<a href="https://www.audacityteam.org/" target="_blank">Audacity</a>（<a href="/tool_app/audacity-2.4.2.zip">点击下载</a>）录音软件在Windows系统进行录音设置，接着使用Audacity录音。</p>
+<p><p class="md__image">
+  <img src="/p3510/img/Audacity_setting.png" alt=""  />
+</p></p>
+<p><p class="md__image">
+  <img src="/p3510/img/Audacity_demo.png" alt=""  />
+</p></p>
+<p>P3510-2MIC出厂固件USB输出为2ch 48KHz采样率信号，其中ch0为ASR输出，ch1为Comms输出。通常操作系统中默认使用ch0信号作为语音输入用于ASR语音识别引擎。并且用于ASR的信号处理需保留极高的人声频谱，以确保高识别率。</p>
+<p>其他操作系统如MAC OSX和Linux操作系统用法跟Windows类似，文中引用XMOS文档XVF3510 Dev Kit Quick Start_en.pdf进行说明</p>
+<blockquote>
+<p>MAC OSX</p>
+<ol>
+<li>Open Audio MIDI setup.</li>
+<li>Click + symbol to add a new device; select Create MultiOutput Device.</li>
+<li>Select Built-in Output and XVF3510 device.</li>
+<li>Select new Multi-Output Device in device list.</li>
+<li>Click at bottom of window to open Options menu; select Use This Device For Sound Output.</li>
+<li>Select XVF3510 from Master Device drop-down list.</li>
+<li>Select Drift Correction for Built-in Output.</li>
+<li>Close Audio Devices window.</li>
+</ol>
+<p>LINUX</p>
+<ol>
+<li>
+<p>Install paprefs using package manager.</p>
+</li>
+<li>
+<p>Open paprefs and click Simultaneous Output tab.</p>
+</li>
+<li>
+<p>Select Add virtual output device for simultaneous output on all local sound cards option.</p>
+</li>
+<li>
+<p>Close paprefs.</p>
+</li>
+<li>
+<p>Open Terminal; restart pulseaudio server:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pulseaudio -k 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Check for the sink named combined.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pactl list sinks 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Set combined output as default output.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> “set-default-sink combined” <span class="p">|</span> pacmd
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</blockquote>
+<h3 id="固件和升级">固件和升级</h3>
+<p>如果P3510-2MIC的出厂默认固件满足不了用户的配置需求，可以在Firmware中选择其他配套的固件，使用USB数据线连接PC电脑，使用配套提供的DFU(Device Firmware Update)工具进行更新固件。</p>
+<h4 id="安装驱动">安装驱动</h4>
+<p>Windows系统：</p>
+<p>P3510-2MIC在操作系统中都能识别成XVF3510 (UAC1.0) Adaptive作为声卡输入输出，而Windows系统中的设备管理器显示的XMOS Control需要安装驱动，才能使用XMOS提供的dfu_usb工具进行升级和vfcrtol_usb工具进行DSP 参数控制。使用第三方工具<a href="https://zadig.akeo.ie/" target="_blank">zadig</a>（<a href="/tool_app/zadig-2.5.zip">点击下载</a>）进行驱动安装。</p>
+<p>运行zadig，在列表中选择 XMOS Control (Interface 3)，然后选择 libusb-win32 ，点击 Reinstall Driver。</p>
+<p><p class="md__image">
+  <img src="/p3510/img/intall_zadig.png" alt=""  />
+</p></p>
+<p>Linux系统：不需要安装驱动</p>
+<p>Mac  系统：不需要安装驱动</p>
+<h4 id="固件列表">固件列表</h4>
+<p>这里配套提供了4个固件，主要是AEC参考提供方式和USB输出音频采样率作为区别，参考下表。如配套的固件仍未满足使用，可以在下面找到解决方式。</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th align="left">Firmware</th>
+<th>采样率</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td align="left">data_xvf3510_usb_aec_ref_48K_v4_1_0.dfu</td>
+<td>48000Hz</td>
+<td>出厂默认固件，使用USB输入输出，同时使用USB提供AEC参考信号，音频格式为48KHz采样率</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="left">data_xvf3510_I2S_aec_ref_48K_v4_1_0.dfu</td>
+<td>48000Hz</td>
+<td>使用3.5mm耳机孔接入模拟参考信号，或者是FPC的AEC_R和AEC_L的作为参考信号，音频格式为48KHz采样率</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="left">data_xvf3510_usb_aec_ref_16K_v4_1_0.dfu</td>
+<td>16000Hz</td>
+<td>使用USB输入输出，同时使用USB提供AEC参考信号，音频格式为16KHz采样率。</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="left">data_xvf3510_I2S_aec_ref_16K_v4_1_0.dfu</td>
+<td>16000Hz</td>
+<td>使用3.5mm耳机孔接入模拟参考信号，或者是FPC的AEC_R和AEC_L的作为参考信号，音频格式为16KHz采样率。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dfu升级">DFU升级</h4>
+<p>在Windows系统打开cmd命令行终端工具，cd进入<em>P3510-2MIC/Firmware</em>文件夹，键入如下指令或者或者复制其中对于固件的指令进行运行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">dfu_usb --vendor-id 0x20B1 --product-id 0x0014 write_upgrade boot.dfu data_xvf3510_usb_aec_ref_16K_v4_1_0.dfu
+</code></pre></td></tr></table>
+</div>
+</div><p>执行完之后，打印出一下信息说明固件DFU升级成功</p>
+<pre><code class="language-print" data-lang="print">poll timeout 0 msec
+HAL: read command: GETSTATE (134), 4 bytes
+write upgrade successful
+HAL: reboot
+HAL: write command: REBOOT (5), 0 bytes
+</code></pre><p>其他操作系统如MAC和Linux的使用Terminal，键入指令和打印的内容一致。</p>
+<h2 id="深入使用">深入使用</h2>
+<p>在现有的固件仍不能满足用户的现有的需求，可以尝试使用在P3510-2MIC配套提供XMOS官方的原始文件夹（<em>XVF3510-UA-Unqualified-Release_4.1.0rc1</em>），进行线调试和生成用户自己的DFU配置固件（data_xxx.dfu），而这些用户新的需求一般可以列为如下几个分类</p>
+<ul>
+<li>修改USB枚举信息，如USB 字符串，和USB的VID和PID</li>
+<li>修改DSP算法参数，如AGC增益，以更加吻合用户的使用环境，以达到更高的识别率和更远的距离</li>
+<li>修改USB输入输出的通道映射，如ch0和ch1都输出ASR信号，AEC的参考信号的提供方式</li>
+<li>修改输出音频采样率参数，如修改为16KHz/16bit的音频输出格式</li>
+</ul>
+<p>在进行这一部分操作，用户需要认真阅读XMOS的文档资料[XVF3510-User-Guide_4.1的XVF3510-UA部分，才能了解XVF3510的寄存器的参数，以便在线调试和生成DFU配置固件。并且下文描述内容跟XMOS提供的文档一致。</p>
+<blockquote>
+<p>以下内容已经假设用户对麦克风阵列的DSP算法，已经有一定的了解，或者根据文档自行了解熟悉，并且了解其DSP参数和数值</p>
+<p>Acoustic Echo Cancellation (AEC)</p>
+<p>Automatic Delay Estimation &amp; Control (ADEC)</p>
+<p>Interference Cancellation (IC)</p>
+<p>Voice Activity Detection (VAD)</p>
+<p>Noise Suppression (NS)</p>
+<p>Automatic Gain Control (AGC)</p>
+</blockquote>
+<h3 id="在线调试">在线调试</h3>
+<p>确保P3510-2MIC的<a href="/#%e5%ae%89%e8%a3%85%e9%a9%b1%e5%8a%a8">XMOS Control驱动</a>已经安装（仅windows系统需要）</p>
+<p>windows系统，运行cmd，并且cd进入<em>P3510-2MIC/XVF3510-UA-Unqualified-Release_4.1.0rc1/host/Win32/bin</em>，键入类似指令，便可进行在线调试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">vfctrl_usb GET_GAIN_CH0_AGC
+</code></pre></td></tr></table>
+</div>
+</div><p>打印输出的信息如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">GET_GAIN_CH0_AGC: 154.3720
+</code></pre></td></tr></table>
+</div>
+</div><p>其他操作操作系统类似，运行Terminal终端，cd进入对应路径的<em>bin</em>文件夹，并且执行同样的指令便可</p>
+<p><p class="md__image">
+  <img src="/p3510/img/Host_bin_dir.png" alt=""  />
+</p></p>
+<p>XVF3510里面有很多DSP参数可配置，用户根据XVF3510-User-Guide_4.1.pdf的介绍，可以实现通过USB  HID（XMOS Control）进行在线调试参数，由于受P3510-2MIC PCBA的硬件限制，XVF3510-INT部分，XVF3510的I/O和I2C等无法体现效果。其中的可用参数整理在附录里面。</p>
+<div class="alert alert-warning" role="alert" data-dir="ltr"><strong>在</strong>线调试的参数仅存在XVF310 RAM内存中， 断电即复位为默认值，如确实需要保存已调试的参数到flash中，需要生成DFU配置固件。</div>
+<h3 id="生成dfu配置固件">生成DFU配置固件</h3>
+<p>根据在线调试的参数，保存在XVF3510固件中，以便每次断电保存参数。同时USB枚举描述的参数，需要生成DFU配置固件才能生效，这方面仍需了解如何生成DFU配置固件。根据XVF3510-User-Guide_4.1.pdf的说明，我们抽取出了相应的操作步骤，并且提前生成和提供了boot.dfu文件。</p>
+<h4 id="安装python-3">安装python 3</h4>
+<p>生成DFU配置固件需要用到python 3工具（推荐v3.7 以上版本，Python 下载连接 <a href="http://python.org/downloads">http://python.org/downloads</a>.</p>
+<p>在Windows系统上需要自行配置Python的环境变量，运行cmd且键入python已确认是否python已经配置了环境变量。如果没有如下打印，在windows系统的，编辑系统环境变量-&gt;高级-&gt;环境变量-&gt;找到“path”后双击打开-&gt;新建-&gt;复制Python安装路径-&gt;保存确定。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">C:<span class="se">\U</span>sers<span class="se">\q</span>iu&gt;python
+Python 3.8.5 <span class="o">(</span>tags/v3.8.5:580fbb0, Jul <span class="m">20</span> 2020, 15:57:54<span class="o">)</span> <span class="o">[</span>MSC v.1924 <span class="m">64</span> bit <span class="o">(</span>AMD64<span class="o">)]</span> on win32
+Type <span class="s2">&#34;help&#34;</span>, <span class="s2">&#34;copyright&#34;</span>, <span class="s2">&#34;credits&#34;</span> or <span class="s2">&#34;license&#34;</span> <span class="k">for</span> more information.
+&gt;&gt;&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="生成步骤">生成步骤</h4>
+<p>在Windows系统上操作时，我们梳理了生成步骤流程，整理出一个批处理文件<em>user_define_dfu_upgrade_cmd.bat</em></p>
+<blockquote>
+<p>路径为：<em>XVF3510-UA-Unqualified-Release_4.1.0rc1/user_define_dfu_upgrade_cmd.bat</em></p>
+</blockquote>
+<p>在双击运行之前批处理文件之前，先在<em>user_define_xvf3510.txt</em>文件编写上在线调试已确定的XVF3510 DSP参数</p>
+<blockquote>
+<p>路径为：<em>XVF3510-UA-Unqualified-Release_4.1.0rc1/data-partition/input/user_define_xvf3510.txt</em></p>
+</blockquote>
+<p>保存并双击运行user_define_dfu_upgrade_cmd.bat便可直接使用USB成功升级固件。</p>
+<p>以下是每个步骤解析说明。其中user_define_dfu_upgrade_cmd.bat的内容如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> data-partition
+  
+python xvf3510_data_partition_generator.py user_define_xvf3510.json
+  
+<span class="nb">cd</span> ../host/Win32/bin
+  
+dfu_suffix_generator 0x20B1 0x0014 ../../../bin/app_xvf3510_ua_xe_to_dfu_uprade_v410.bin boot.dfu
+  
+dfu_suffix_generator 0x20B1 0x0014 ../../../data-partition/output/data_partition_upgrade_user_define_xvf3510_v4_1_0.bin data_user_define_dfu_update.dfu
+  
+dfu_usb --vendor-id 0x20B1 --product-id 0x0014 write_upgrade boot.dfu data_user_define_dfu_update.dfu
+  
+pause
+</code></pre></td></tr></table>
+</div>
+</div><p>在<em>user_define_xvf3510.json</em>中已指定访问相对路径*”path“：*为*&ldquo;input/user_define_xvf3510.txt&rdquo;*</p>
+<blockquote>
+<p>路径为：<em>XVF3510-UA-Unqualified-Release_4.1.0rc1/data-partition/user_define_xvf3510.json</em></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;comment&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;spispec_path&#34;</span><span class="p">:</span> <span class="s2">&#34;16mbit_12.5mhz_sector_4kb.spispec&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;regular_sector_size&#34;</span><span class="p">:</span> <span class="s2">&#34;4096&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;hardware_build&#34;</span><span class="p">:</span> <span class="s2">&#34;0xFFFFFFFF&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;item_files&#34;</span><span class="p">:</span> <span class="p">[</span>
+		<span class="p">{</span>
+            <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;input/user_define_xvf3510.txt&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;comment&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在user_define_xvf3510.txt文件中填写在线调试已确认的XVF3510参数或者需要修改的USB描述信息，类似如下,保存并且关闭。</p>
+<pre><code>SET_DEVICE_TO_USB_RATE 16000
+SET_IO_MAP 5 10
+SET_IO_MAP 4 9
+</code></pre><p>运行了如下指令后，便会生成输出文件<em>data_partition_upgrade_user_define_xvf3510_v4_1_0.bin</em>在/output/路径中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">python xvf3510_data_partition_generator.py user_define_xvf3510.json
+</code></pre></td></tr></table>
+</div>
+</div><p>利用上面的bin文件进一步生成data_data_user_define_dfu_update.dfu（DFU升级最终需要的配置固件），使用的工具是dfu_suffix_generator，使用cmd或者Termial终端运行，且需要加入USB的VID和PID信息进行交叉校验</p>
+<blockquote>
+<p>路径为：XVF3510-UA-Unqualified-Release_4.1.0rc1/host/Win32/bin/dfu_suffix_generator.exe</p>
+</blockquote>
+<p>其简化（路径）的运行指令如下，其中 0x20B1 0x0014分别为USB VID和PID。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">dfu_suffix_generator 0x20B1 0x0014 data_partition_upgrade_user_define_xvf3510_v4_1_0.bin data_user_define_dfu_update.dfu
+</code></pre></td></tr></table>
+</div>
+</div><p>最后一步，把上一步生成<em>data_user_define_dfu_update.dfu</em>结合<em>boot.dfu</em>进行<a href="/#DFU%e5%8d%87%e7%ba%a7">DFU升级</a>，使用的工具为dfu_usb</p>
+<blockquote>
+<p>路径为：XVF3510-UA-Unqualified-Release_4.1.0rc1/host/Win32/bin/dfu_usb.exe</p>
+</blockquote>
+<p>其简化（路径）的运行指令如下，其中 0x20B1 0x0014分别为USB VID和PID。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">dfu_usb --vendor-id 0x20B1 --product-id 0x0014 write_upgrade boot.dfu data_xvf3510_usb_aec_ref_16K_v4_1_0.dfu
+</code></pre></td></tr></table>
+</div>
+</div><p>其他操作系统也是同样的指令，可以结合上文提供的Windows提供的批处理文件，制作类似的shell脚本。</p>
+<h2 id="资源">资源</h2>
+<p>P3510-2MIC.zip全部的资料(<a href="/P3510-2MIC.zip">点击下载</a>)</p>
+<h2 id="支持和商务">支持和商务</h2>
+<p>P3510-2MIC支持PCBA定制服务，提供批量PCBA和芯片供应服务。</p>
+<p>任何的技术支持和商务合作，可以直接邮箱联系我们：p3510-2mic@pawpaw.hk，或者访问www.pawpaw.hk了解更多。</p>
+<h2 id="faq">FAQ</h2>
+<p>Q1: boot.dfu和data_xxx.dfu的区别？</p>
+<p>boot.dfu是XVF3510的基础固件，内含DSP算法和控制等基础程序，data_xxx.dfu为配置固件，修改boot.dfu里面的参数。所以在DFU的时候，两个固件都需要添加进去</p>
+<p>Q2: DFU更新完之后，在windows操作系统下使用audacity录制出错的原因</p>
+<p>出现该问题仅是在Windows系统，其他操作系统Mac和Linux并不会存在这个情况。由于windows系统对声卡有记忆功能，DFU固件了后，可能改变了与之前声卡的记忆，导致了使用第三方软件如audacity无法录制音频，这时需要使用usbdeview进行删除Windows的对声卡的记忆。</p>
+<p>USB连上P3510-2MIC和windows PC，运行usbdeview，点击Connected栏项以列出XVF3510相关枚举情况；逐一选择XVF3510的枚举，右击后出现新的界面；选择Uninstall Selected Devices进行删除Windows的声卡的记忆；重新上电即可。</p>
+<p><p class="md__image">
+  <img src="/p3510/img/uninstall_device_on_windows.png" alt=""  />
+</p></p>
+<p>Q3：dfu_usb和vfctrl_usb显示could not find device和无法使用的原因？</p>
+<p>确保USB连接了P3510-2MIC和PC，并且确保已经使用了zadig进行安装了XMOS Control的驱动。如果问题仍出现，尝试确认一下XMOS Control是否已经枚举，亦或者卸载XMOS Control驱动，并且使用zadig重新按照。</p>
+<p>Q3:  有提供例程连接语音识别平台吗？</p>
+<p>抱歉，这方面我们没有提供例程，类似Alexa和Aliyun等语音识别API，我们没有办法提供相关例程。</p>
+<p>Q4：把P3510-2MIC装上产品的结构外壳上，有哪些声学方面需要注意的吗？</p>
+<p>我们建议使用裸板进行使用，这样的性能效果是最佳的，如果确实需要组装到产品结构上，我们建议在麦克风上（顶部拾音）加个密封胶套，以确保声音不进入到结构里面进行不断的反射形成混响。同时我们考虑在下个硬件版本配套提供密封胶套</p>
+<p><p class="md__image">
+  <img src="/p3510/img/mic_seal.png" alt=""  />
+</p></p>
+
+  </article>
+</div>
+      
+
+      
+    </article>
+    
+    <section id="list-side" class="r" data-dir="ltr">
+      
+        <div class="toc">
+  <h6 class="toc__label"></h6>
+  <div class="toc__body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概要">概要</a></li>
+    <li><a href="#版本">版本</a></li>
+    <li><a href="#特点">特点</a></li>
+    <li><a href="#规格">规格</a></li>
+    <li><a href="#硬件概述">硬件概述</a>
+      <ul>
+        <li><a href="#系统连接框图">系统连接框图</a></li>
+        <li><a href="#引脚映射">引脚映射</a></li>
+        <li><a href="#尺寸">尺寸</a></li>
+      </ul>
+    </li>
+    <li><a href="#应用场合">应用场合</a></li>
+    <li><a href="#开始">开始</a>
+      <ul>
+        <li><a href="#第一个demo">第一个Demo</a>
+          <ul>
+            <li><a href="#声卡设备设置">声卡设备设置</a></li>
+            <li><a href="#录制和demo">录制和Demo</a></li>
+          </ul>
+        </li>
+        <li><a href="#固件和升级">固件和升级</a>
+          <ul>
+            <li><a href="#安装驱动">安装驱动</a></li>
+            <li><a href="#固件列表">固件列表</a></li>
+            <li><a href="#dfu升级">DFU升级</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#深入使用">深入使用</a>
+      <ul>
+        <li><a href="#在线调试">在线调试</a></li>
+        <li><a href="#生成dfu配置固件">生成DFU配置固件</a>
+          <ul>
+            <li><a href="#安装python-3">安装python 3</a></li>
+            <li><a href="#生成步骤">生成步骤</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#资源">资源</a></li>
+    <li><a href="#支持和商务">支持和商务</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+      
+    </section>
+
+  </div>
+</div>
+
+<script>
+  'use strict';
+  
+  function wrap(el, wrapper) {
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+  }
+
+  (function () {
+    var singleContentsElem = document.querySelector('.single__contents');
+    singleContentsElem ? 
+    singleContentsElem.querySelectorAll('pre > code').forEach(function(elem) {
+      var dataLang = elem.getAttribute('data-lang');
+      var dataLangWrapper = document.createElement('div');
+      var code = null;
+      var codeTitle = null;
+
+      if (dataLang && dataLang.includes(':')) {
+        code = dataLang.split(':')[0];
+        codeTitle = dataLang.split(':')[1];
+
+        dataLangWrapper.className = 'language-' + code;
+        dataLangWrapper.setAttribute('data-lang', codeTitle);
+
+        elem.className = 'language-' + code;
+        elem.setAttribute('data-lang', codeTitle);
+        elem.setAttribute('id', codeTitle);
+      }
+
+      if (!dataLang || codeTitle) {
+        wrap(elem.parentNode, dataLangWrapper);
+      }
+
+    }) : null;
+  })();
+  
+
+
+  
+  
+  var dollarCodeElem = document.querySelectorAll('div.language-\\$');
+  var gtCodeElem = document.querySelectorAll('div.language-\\>');
+  
+  dollarCodeElem ?
+  dollarCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '$<br/>';
+    }) : null;
+  }) : null;
+
+  gtCodeElem ?
+  gtCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '><br/>';
+    }) : null;
+  }) : null;
+  
+</script>
+
+
+
+
+<script defer src="/js/helper/getParents.min.js"></script>
+
+<script defer src="/js/helper/closest.min.js"></script>
+
+<script defer src="/js/helper/prev.min.js"></script>
+
+<script defer src="/js/helper/prop.min.js"></script>
+
+<script defer src="/js/helper/fadeinout.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+    
+    
+    var tables = document.querySelectorAll('.single__contents > table');
+    for (let i = 0; i < tables.length; i++) {
+      var table = tables[i];
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentElement.replaceChild(wrapper, table);
+      wrapper.appendChild(table);
+    }
+    
+
+
+    
+    
+    
+    var lib = JSON.parse("null");
+
+    if (lib && lib.includes('mermaid')) {
+      var themeVariant = localStorage.getItem('theme') || 'light';
+
+      if (themeVariant === "dark") {
+        mermaid.initialize({ theme: 'dark' });
+      } else {
+        mermaid.initialize({ theme: 'default' });
+      }
+      
+      var mermaids = [];
+      [].push.apply(mermaids, document.getElementsByClassName('language-mermaid'));
+      mermaids.forEach(function(elem) {
+        var elemParentNode = elem.parentNode;
+
+        if (elemParentNode !== document.body) {
+          elemParentNode.parentNode.insertBefore(elem, elemParentNode);
+          elemParentNode.parentNode.removeChild(elemParentNode);
+        }
+
+        var newElemWrapper = document.createElement('div');
+        newElemWrapper.classList.add('mermaid');
+        newElemWrapper.innerHTML = elem.innerHTML;
+        elem.replaceWith(newElemWrapper);
+      });
+    }
+    
+    
+
+    
+    if (lib && lib.includes('katex')) {
+      var mathElements = document.getElementsByClassName('math');
+      var options = {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ],
+      };
+
+      renderMathInElement(document.querySelector('.single__contents'), options);
+    }
+    
+
+
+    
+    if (lib && lib.includes('flowchartjs')) {
+      
+      var options = JSON.parse("{\"arrow-end\":\"block\",\"element-color\":\"black\",\"fill\":\"white\",\"flowstate\":{\"approved\":{\"fill\":\"#58C4A3\",\"font-size\":12,\"no-text\":\"n/a\",\"yes-text\":\"APPROVED\"},\"current\":{\"fill\":\"yellow\",\"font-color\":\"red\",\"font-weight\":\"bold\"},\"future\":{\"fill\":\"#FFFF99\"},\"invalid\":{\"fill\":\"#444444\"},\"past\":{\"fill\":\"#CCCCCC\",\"font-size\":12},\"rejected\":{\"fill\":\"#C45879\",\"font-size\":12,\"no-text\":\"REJECTED\",\"yes-text\":\"n/a\"},\"request\":{\"fill\":\"blue\"}},\"font-color\":\"black\",\"font-size\":14,\"line-color\":\"black\",\"line-length\":50,\"line-width\":3,\"no-text\":\"no\",\"scale\":1,\"symbols\":{\"end\":{\"class\":\"end-element\"},\"start\":{\"element-color\":\"green\",\"fill\":\"yellow\",\"font-color\":\"red\"}},\"text-margin\":10,\"x\":0,\"y\":0,\"yes-text\":\"yes\"}");
+      var jsonContent = null;
+
+      var flowchartPrefix = "language-flowchart";
+      var index = 0;
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + flowchartPrefix + "]"), function(x){
+          x.style.display = 'none'
+          x.parentNode.style.backgroundColor = "transparent"
+          jsonContent = x.innerText;
+
+          var node0 = document.createElement('div');
+          node0.id = 'flowchart' + index;
+          x.parentNode.insertBefore(node0, x);
+
+          var diagram = flowchart.parse(jsonContent);
+          diagram.drawSVG("flowchart"+index, options);
+
+          index +=1;
+      });      
+    }
+    
+
+
+    
+    if (lib && lib.includes('chart')) {
+      var borderColor = "#666";
+      var bgColor = "#ddd";
+      var borderWidth = 2;
+
+      Chart.defaults.global.elements.rectangle.borderWidth = borderWidth;
+      Chart.defaults.global.elements.rectangle.borderColor = borderColor;
+      Chart.defaults.global.elements.rectangle.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.line.borderWidth = borderWidth;
+      Chart.defaults.global.elements.line.borderColor = borderColor;
+      Chart.defaults.global.elements.line.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.point.borderWidth = borderWidth;
+      Chart.defaults.global.elements.point.borderColor = borderColor;
+      Chart.defaults.global.elements.point.backgroundColor = bgColor;
+
+      var chartPrefix = "language-chart";
+      var index = 0;
+      var jsonContent = null;
+
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + chartPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        jsonContent = x.innerText;
+        var node0 = document.createElement('canvas');
+        var source = null;
+        node0.height = 200;
+        node0.style.height = 200;
+        node0.id = 'myChart' + index;
+        source = JSON.parse(jsonContent);
+        x.parentNode.insertBefore(node0, x);
+        var ctx = document.getElementById('myChart' + index).getContext('2d');
+        var myChart = new Chart(ctx, source);
+        index += 1;
+      });            
+    }
+    
+
+
+    
+    if (lib && lib.includes('viz')) {
+      var vizPrefix = "language-viz-";
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + vizPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        var engine;
+        x.getAttribute("class").split(" ").forEach(function (cls) {
+          if (cls.startsWith(vizPrefix)) {
+            engine = cls.substr(vizPrefix.length);
+          }
+        });
+        var viz = new Viz();
+        viz.renderSVGElement(x.innerText, { engine: engine })
+          .then(function (element) {
+            element.style.width = "100%";
+            x.parentNode.insertBefore(element, x);
+          })
+      });
+    }
+    
+    
+  });
+</script>
+
+<script>
+  var listSide = document.getElementById('list-side');
+  var listMain = document.getElementById('list-main');
+  var singleMenu = document.getElementById('single-menu');
+  var switchElem = document.querySelector('.switch');
+  var wideViewAsDefault = JSON.parse("null");
+  
+  enquire.register("screen and (max-width:1280px)", {
+    match: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';  
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        singleMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+    },
+    unmatch: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        listSide.className = 'r';
+        listMain.className = 'm';
+        singleMenu.className = 'l';
+      }
+    },
+  }).register("screen and (max-width:960px)", {
+    match: function () {
+      singleMenu.className = 'l';
+      listMain.className = 'mr';
+      listSide.className = 'hide';
+      switchElem.className = 'hide';
+    },
+    unmatch: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        singleMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+      switchElem.className = 'switch';
+    },
+  }).register("screen and (max-width:600px)", {
+    match: function () {
+      listSide.className = 'hide';
+      listMain.className = 'lmr';
+      singleMenu.className = 'hide';
+      switchElem.className = 'hide';
+    },
+    unmatch: function () {
+      listSide.className = 'hide';
+      listMain.className = 'mr';
+      singleMenu.className = 'l';
+      switchElem.className = 'hide';
+    },
+  });
+</script>
+
+        
+<div class="bot">
+  <footer class="footer">
+    <div class="divider">
+      <div class="lmr">
+        
+          <p class="caption">
+            ©{2020}, Pawpaw Ltd.,All Rights Reserved
+          </p>
+          
+        
+      </div>
+    </div>
+  </footer>
+</div>
+
+    </div>
+
+</body>
+
+</html>

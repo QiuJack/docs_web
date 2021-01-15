@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>notes on 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    <link>http://docs.pawpaw.ltd/notes/</link>
+    <description>Recent content in notes on 木瓜电子 XMOS 麦克风阵列 评估板</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;{2020}, Pawpaw Ltd.,All Rights Reserved</copyright>
+    <lastBuildDate>Tue, 28 Jan 2020 00:08:29 +0900</lastBuildDate>
+    
+        <atom:link href="http://docs.pawpaw.ltd/notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>XMOS XTAG 转接板</title>
+        <link>http://docs.pawpaw.ltd/notes/xmos_xtag_adapter_board/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/notes/xmos_xtag_adapter_board/</guid>
+        <description>XMOS的XTAG调试工具为XMOS芯片专用调试和烧录工具，包含JTAG，复位，在线调试和烧录程序，还有高级调试，xtag对于XMOS芯片开发都必不可少的。
+木瓜电子提供转接板主要是是为了减小XTAG的占用面积，建议用户在硬件设计的时候使用2x5 1.27mm的端子来代替XTAG的2X10 2.54mm的大端子，以减小PCBA面积和减少layout走线。
+转接原理如下图
+其实物如下图，用户需要自行焊接转接板的端子，并且遵循其搭建过程
+XTAG硬件用户需自行购买，而XTAG转接板所需的物料器件，木瓜电子可免费提供给到用户，由用户自行焊接</description>
+      </item>
+      
+      <item>
+        <title>XMOS 麦克风阵列选型说明</title>
+        <link>http://docs.pawpaw.ltd/notes/xmos_array_microphone_selection/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/notes/xmos_array_microphone_selection/</guid>
+        <description>概要 XMOS 芯片现有平台内置麦克风阵列算法的芯片信号为XVF3000,XVF35000,XVF3510。内置麦克风阵列算法，包含回音消除，波束成形，语音增强，噪声抑制等算法，接口带有USB和I2S等，仅支持PDM数字麦克风。这几个芯片平台都配有相应的评估板，其中的平台区别如下文描述，用户根据需求，自行选择。
+区别    属性 XVF3000 XVF3500 XVF3510     成本 高 高 低   封装 TQFP-128 FBGA-167 QFN-60   功耗 ~700 mW ~1 W ~600 mW   Flash 内置QSPI Flash 外置QSPI Flash 外置QSPI Flash   麦克风数量 4路PDM 数字麦克风 4路PDM 数字麦克风 2路PDM 数字麦克风   阵型 圆形/线形 4麦 线形 4麦 线形 2麦   发布时间 2017 2018 2019   开源情况 代码开源，算法库形式 代码开源，算法库形式 不开源，配置的形式   二次开发 允许 允许 不允许，仅配置   完整型号 XVF3000-TQ128-CA XVF3500-FB167-C XVF3510-QF60-C   评估板 PXVF3000-KIT PXVF3500-KIT PXVF3510-KIT   算法方向 会议通话/语音识别 会议通话/语音识别 会议通话/语音识别   算法优势 会议通话 会议通话 语音识别   AEC性能 mono AEC，非常好 stereo AEC ，非常好 stereo AEC，一般   Beam-forming 有 有 有，但弱化了   点噪消除 无 无 有，抗噪能力强   DOA 有，圆形可输出360度定位角度 有，线形输出180度定位角度 无，无输出角度信息         DSP 参数调整 较多参数可调整 较多参数可调整 较少参数可调整   DSP 参数固化 需在代码固化 需在代码固化 可上位机写入固化    选型建议 根据这三个平台的区别，木瓜电子提供选型思路参考如下</description>
+      </item>
+      
+    
+  </channel>
+</rss>

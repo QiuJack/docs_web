@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>木瓜电子 on 木瓜电子 XMOS 麦克风阵列 评估板</title>
+    <link>http://docs.pawpaw.ltd/</link>
+    <description>Recent content in 木瓜电子 on 木瓜电子 XMOS 麦克风阵列 评估板</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>&amp;copy;{2020}, Pawpaw Ltd.,All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 26 Jan 2020 04:15:05 +0900</lastBuildDate>
+    
+        <atom:link href="http://docs.pawpaw.ltd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>PXUA216MB-DL2-M_硬件使用</title>
+        <link>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/</link>
+        <pubDate>Thu, 14 Jan 2021 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/</guid>
+        <description>概要 PXUA216MB-DL2-M是基于XMOS XU216-512-TQ128-C主控设计的 USB 16路麦克风采集评估板，能够实现通过USB UAC 2.0协议实时地，同步地传输16路麦克风原始信号到操作系统端。往下兼容其他麦克风的任何数量麦克风采集。
+PXUA216MB-DL2-M评估板能够同步采集 16 路数字 MIC 信号以及 2 路回采信号，同时支持立体声播放，所有数据均通过 USB 进行传输，评估板主要提供给具备一定算法能力的声学企业以及个人使用。
+评估板USB UAC 2.0（USB Audio Class 2.0）协议兼容 Windows、Linux 和 Android 操作系统, 16个麦克风小板做分离式设计，可移动的，麦克风小板为底部拾音。灵活实现多种麦克风阵型布置需求。
+PXUA216MB-DL2-M评估板无内置任何麦克风阵列算法，主要功能为实时地，高一致性地传输16路麦克风原始信号。同时评估板集成了line-in和Line-out端子，通过USB传输16路麦克风+2路Line-in音轨，下行播放line-out 立体声播放。
+版本    产品版本 修改 发布时间     V1 初次发布 2017年10月20日   V2 修改了麦克风小板的尺寸 2018年9月25日    特点  USB UAC 2.0协议传输，作为外置声卡使用 16 PDM 数字麦克风，分离式设计，麦克风小板可以移动 支持 16KHz/48 KHz @16bit /24bit音频采样率， 支持 1 路Line-in模拟输入和1 路Line-out 模拟输出  规格   XMOS XU216主控</description>
+      </item>
+      
+      <item>
+        <title>XMOS XTAG 转接板</title>
+        <link>http://docs.pawpaw.ltd/notes/xmos_xtag_adapter_board/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/notes/xmos_xtag_adapter_board/</guid>
+        <description>XMOS的XTAG调试工具为XMOS芯片专用调试和烧录工具，包含JTAG，复位，在线调试和烧录程序，还有高级调试，xtag对于XMOS芯片开发都必不可少的。
+木瓜电子提供转接板主要是是为了减小XTAG的占用面积，建议用户在硬件设计的时候使用2x5 1.27mm的端子来代替XTAG的2X10 2.54mm的大端子，以减小PCBA面积和减少layout走线。
+转接原理如下图
+其实物如下图，用户需要自行焊接转接板的端子，并且遵循其搭建过程
+XTAG硬件用户需自行购买，而XTAG转接板所需的物料器件，木瓜电子可免费提供给到用户，由用户自行焊接</description>
+      </item>
+      
+      <item>
+        <title>XMOS 麦克风阵列选型说明</title>
+        <link>http://docs.pawpaw.ltd/notes/xmos_array_microphone_selection/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/notes/xmos_array_microphone_selection/</guid>
+        <description>概要 XMOS 芯片现有平台内置麦克风阵列算法的芯片信号为XVF3000,XVF35000,XVF3510。内置麦克风阵列算法，包含回音消除，波束成形，语音增强，噪声抑制等算法，接口带有USB和I2S等，仅支持PDM数字麦克风。这几个芯片平台都配有相应的评估板，其中的平台区别如下文描述，用户根据需求，自行选择。
+区别    属性 XVF3000 XVF3500 XVF3510     成本 高 高 低   封装 TQFP-128 FBGA-167 QFN-60   功耗 ~700 mW ~1 W ~600 mW   Flash 内置QSPI Flash 外置QSPI Flash 外置QSPI Flash   麦克风数量 4路PDM 数字麦克风 4路PDM 数字麦克风 2路PDM 数字麦克风   阵型 圆形/线形 4麦 线形 4麦 线形 2麦   发布时间 2017 2018 2019   开源情况 代码开源，算法库形式 代码开源，算法库形式 不开源，配置的形式   二次开发 允许 允许 不允许，仅配置   完整型号 XVF3000-TQ128-CA XVF3500-FB167-C XVF3510-QF60-C   评估板 PXVF3000-KIT PXVF3500-KIT PXVF3510-KIT   算法方向 会议通话/语音识别 会议通话/语音识别 会议通话/语音识别   算法优势 会议通话 会议通话 语音识别   AEC性能 mono AEC，非常好 stereo AEC ，非常好 stereo AEC，一般   Beam-forming 有 有 有，但弱化了   点噪消除 无 无 有，抗噪能力强   DOA 有，圆形可输出360度定位角度 有，线形输出180度定位角度 无，无输出角度信息         DSP 参数调整 较多参数可调整 较多参数可调整 较少参数可调整   DSP 参数固化 需在代码固化 需在代码固化 可上位机写入固化    选型建议 根据这三个平台的区别，木瓜电子提供选型思路参考如下</description>
+      </item>
+      
+      <item>
+        <title>PXVF3000-KIT_硬件使用</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_usage/</link>
+        <pubDate>Thu, 10 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_usage/</guid>
+        <description>概要 PXVF3000-KIT针对XMOS的XK-VF3100-C43 开发板进行硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-VF3100-C43 开发板，所用的DSP芯片为XVF3000，设计成等距圆形4麦阵列。
+PXVF3000-KIT为4麦阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（ASR，Automatic Speech Recognition ）和用于会议电话（Comms, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。
+PXVF3000-KIT内置了单声道回音消除（AEC） , 波束成型（BF），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入桌面会议产品中。
+版本    产品版本 修改 发布时间     PXVF3000-KIT V1 EOF(停产) 2017年10月20日   PXVF3000-KIT V2 重新修改设计，简化其他硬件，且去掉蓝牙 2020年11月15日    特点   远距离拾音
+  支持USB Audio Class 1.0 (UAC 1.0)
+  支持USB HID 调试和USB DFU升级
+  4路圆形麦克风阵列
+  支持3.5mm耳机孔作为播放输出</description>
+      </item>
+      
+      <item>
+        <title>XVF3000硬件设计</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/</link>
+        <pubDate>Thu, 10 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXVF3000-KIT，且查阅PXVF3000-KIT_硬件使用 已详细了解XVF3000 内置的前端算法AEC , BF , NS, AGC,，且已查阅PXVF3000-KIT_dsp_描述 已查阅本站XVF3000项目实施落地 已查阅了XVF3000的datasheet和参考设计 已确认XMOS XVF3000 4路麦克风阵列方案性能可满足导入项目产品中  XVF3000 datasheet 导读 查看XVF3000-3100-TQ128-Datasheet_15.pdf，其描述的为xvf3000裸片（不含固件）的硬件特性。了解基本的硬件数据，电气特性。
+基本特性  商用温度等级（0 °C to 70 °C） TQ128 封装 580mA典型工作电流，700mW左右（固件运行） 内置了16Mbit QSPI Flash I/O 驱动能力为4mA  电源 根据datasheet的最小系统框图，XVF3000的需要两路电压供应，3V3和1V0, 其中3V3提供给I/O, USB , Flash等外设使用，1V0提供给XVF3000逻辑核心使用。
+其两路电压时序要求为3V3先上电，稳定后，1V0后上电。
+复位检测 XVF3000需要外部有复位检测芯片，可以选择单独侦测 3V3或者1V0，以避免在电压不正常时，芯片无法复位来运行固件。
+QSPI Flash XVF3000内置了QSPI Flash（IS25LP016D），其主要是存储XVF3000固件，所以XVF3000项目得预先烧录固件才能启动运行4路麦克风阵列算法。使用QSPI Flash烧录器烧录XVF3000需要配置QE=1的烧录方式。
+BOOT MODE XVF3000的由QSPI Flash启动，根据框图连接XVF3000和Flash时，需要确保X0D01上拉1K电阻，以实现boot mode是由XVF3000芯片读取加载内部的QSPI Flash固件。
+I/O 映射 XVF3000的逻辑I/O接口的功能使用由固件定义，datasheet 无描述I/O 功能使用，需参考木瓜电子或者XMOS官方提供的的原理来选择使用特定的I/O map。
+时钟信号 XVF3000外部需要24MHz有源晶振接入作为启动晶振，接入到CLK 引脚，而音频时钟16KHz 和48KHz采样率仍需要一个外部的12.2888MHz音频时钟或者晶体接入作为I2S或者PDM麦克风的MCLK时钟使用。
+原理图和PCB 根据我司或者XMOS官方的提供的参考原理，结合XVF3000的datasheet最小系统。用户可以比较轻易完成XVF3000的最小系统设计，包含了电源，时钟，启动上拉等。</description>
+      </item>
+      
+      <item>
+        <title>XVF3000项目导入</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/</link>
+        <pubDate>Mon, 07 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXVF3000-KIT 已详细了解XVF3000 内置的前端算法AEC , BF , NS, AGC等 已使用PXVF3000-KIT已经通过vfctrl_usb工具调试出理想的参数 已确认XMOS XVF3000 4路麦克风阵列方案性能可满足导入项目产品中  概要 使用XVF3000作为圆形4麦阵列方案的主控，需要了解硬件设计和软件设计，结合结构设计，才能使得产品顺利落地。并且根据我司现有的XMOS麦克风阵列方案，建议使用XVF3000来做桌面会议产品(Comms 方向)
+如需要做语音识别（ASR方向）建议使用我们2麦阵列方案XVF3510方案。 XVF3000项目导入前，根据下文的描述需要了解以下几点:
+ XVF3000的硬件框架的确定 熟悉USB的对产测和测试的作用 XVF3000的固件获取, 烧录和更新 XVF3000 DSP算法参数 麦克风阵列的外壳结构的声学设计 XVF3000的产测需具备的设备和测试的流程 XVF3000过认证需要提前准备的工作  XVF3000 硬件基本框架 XVF3000芯片基本特性如下:
+ 商用温度等级（0 °C to 70 °C） TQ128 封装 580mA典型工作电流，700mW左右（固件运行） 内置了16Mbit QSPI Flash I/O 驱动能力为4mA 订购型号：XVF3000-TQ128-CA； 丝印：VSM01C  XVF3000 硬件系统最小系统如下图。XVF3000 圆形4路麦克风阵列根据音频传输接口的不同，大体分为如下三种硬件框架。用户根据项目需求选择其一，并且以确定硬件上是否需要设计ADC和DAC。
+使用USB连接Host | USB_in&amp;amp;out Host主机的音频传输都通过XVF3000的USB来输入输出，XVF3000作为一个USB Audio声卡设备，产品应用一般为外置的拾音设备。
+其框架如下图，其中：
+ XVF3000前端信号处理完后，提供干净的声音(Comms/ASR)给Host进行会议通话，通过USB接口输入给Host Host播放声音时通过USB声卡播放输出，XVF3000为声卡设备，XVF3000的AEC参考信号在USB协议音频传输过程中获取 XVF3000 USB UAC1.0包含传输音频输入输出、vfctrl_usb和dfu_usb，UAC输入输出的音频格式为16KHz/48KHz
+  使用USB连接Host | Analog_ref XVF3000通过USB输入声音给host主控，Host主控提供模拟AEC参考信号给XVF3000。</description>
+      </item>
+      
+      <item>
+        <title>XVF3500项目导入</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/</link>
+        <pubDate>Mon, 07 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了pxvf3500-KIT 已详细了解XVF3500 内置的前端算法AEC , BF , NS, AGC等 已使用pxvf3500-KIT已经通过vfctrl_usb工具调试出理想的参数 已确认XMOS XVF3500 4路麦克风阵列方案性能可满足导入项目产品中  概要 使用XVF3500作为线条形4麦阵列方案的主控，需要了解硬件设计和软件设计，结合结构设计，才能使得产品顺利落地。并且根据我司现有的XMOS麦克风阵列方案，建议使用XVF3500来做视频通话产品(Comms 方向)
+如需要做语音识别（ASR方向）建议使用我们2麦阵列方案XVF3510方案。 XVF3500项目导入前，根据下文的描述需要了解以下几点:
+ XVF3500的硬件框架的确定 熟悉USB的对产测和测试的作用 XVF3500的固件获取, 烧录和更新 XVF3500 DSP算法参数 麦克风阵列的外壳结构的声学设计 XVF3500的产测需具备的设备和测试的流程 XVF3500过认证需要提前准备的工作  XVF3500 硬件基本框架 XVF3500芯片基本特性如下:
+ 商用温度等级（0 °C to 70 °C） FBGA 167 封装 685mA典型工作电流，1W左右（固件运行） I/O 驱动能力为4mA 订购型号：XVF3500-FB167-C； 丝印：VSM05C  XVF3500 硬件系统最小系统如下图。XVF3500 线形4路麦克风阵列根据音频传输接口的不同，大体分为如下三种硬件框架。用户根据项目需求选择其一，并且以确定硬件上是否需要设计ADC和DAC。
+使用USB连接Host | USB_in&amp;amp;out Host主机的音频传输都通过XVF3500的USB来输入输出，XVF3500作为一个USB Audio声卡设备，产品应用一般为外置的拾音设备。
+其框架如下图，其中：
+ XVF3500前端信号处理完后，提供干净的声音(Comms/ASR)给Host进行会议通话，通过USB接口输入给Host Host播放声音时通过USB声卡播放输出，XVF3500为声卡设备，XVF3500的AEC参考信号在USB音频播放传输过程中获取 XVF3500 USB UAC1.0包含传输音频输入输出、vfctrl_usb和dfu_usb，UAC输入输出的音频格式为16KHz/48KHz
+  使用USB连接Host | Analog_ref XVF3500通过USB输入声音给host主控，Host主控提供模拟AEC参考信号给XVF3500。</description>
+      </item>
+      
+      <item>
+        <title>PXVF3000-KIT_dsp_描述</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/</link>
+        <pubDate>Fri, 04 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXVF3000-KIT 已获取到PXVF3000-KIT的资料包 已能够进行使用dfu_usb和vfvtrl_usb工具， 已详细了解XMOS 的XVF3000-3100-DSP-Databrief文档 已详细了XVF3000 内置的前端算法AEC , BF , NS, AGC等  下文将不再对XVF3000-3100-DSP-Databrief里的专业术语进行解释，重点是描述DSP参数的意义和数值的方向
+PXVF3000-KIT DSP 初始参数 PXVF3000-KIT 使用XVF3000-3100-DSP-Databrief的默认参数，可以通过查阅文档和使用vfctrl_usb 可以读取PXVF3000-KIT的DSP参数。且PXVF3000-KIT每次重新上电，所有DSP 参数都重置为初始值
+1  vfctrl_usb HPFONOFF   其重新上电后首次打印输出的内容为初始值,
+1  HPFONOFF:1   其他参数使用vfctrl_usb工具读取方式同理
+查阅文档XVF3000-3100-DSP-Databrief的从page 15开始的参数描述中可以获取初始参数
+DSP 参数写入和认证 使用vfctrl_usb 工具进行写入DSP 参数，如键入指令：
+1  vfctrl_usb HPFONOFF 2   PXVF3000-KIT可以实时更改HPFONOFF参数为2，并且打印输出如下，
+1  HPFONOFF:2   键入指令时需要注意空格的输入，同时查阅XVF3000-3100-DSP-Databrief里HPFONOFF描述的的范围为[0..3] ，其值的类型为INT型(整数型)。
+确认写入完成了后，可以使用audaciy或者其他录音软件实时查看vfctril_usb工具修改DSP参数的效果。同时建议使用系统声卡监听功能进行实时侦听修改效果。使用3.5mm耳机插入PC电脑的耳机孔后，参考下图，进行如下操作，
+ 在录音栏项，右键 XMOS VocalFusion Spk(UAC1.0) -&amp;gt; 点击属性 选中侦听此设备 在通过此设备中播放下拉栏中-&amp;gt;选择PC电脑内置的播放声卡 必须使用耳机插入PC的3.5mm耳机口进行侦听，否正会产生啸叫  DSP 参数简单介绍 HP 高通滤波 XVF3000-3100-DSP-Databrief文档描述的高通滤波器仅有一组参数HPFONOFF，其最高值为是180Hz，如将PXVF3000-KIT作为会议设备（Comms输出）使用，建议设置HPFONOFF为3。如作为语音识别（ASR）,该值可以使用初始值</description>
+      </item>
+      
+      <item>
+        <title>PXVF3500-KIT_dsp_描述</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/</link>
+        <pubDate>Fri, 04 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXVF3500-KIT 已获取到PXVF3500-KIT的资料包 已能够进行使用dfu_usb和vfvtrl_usb工具， 已详细了解XMOS 的XVF3500-DSP-Databrief文档 已详细了XVF3500 内置的前端算法AEC , BF , NS, AGC等  下文将不再对XVF3500-DSP-Databrief里的专业术语进行解释，重点是描述DSP参数的意义和数值的方向
+PXVF3500-KIT DSP 初始参数 PXVF3500-KIT 使用XVF3500-DSP-Databrief的默认参数，可以通过查阅文档和使用vfctrl_usb 可以读取PXVF3500-KIT的DSP参数。且PXVF3500-KIT每次重新上电，所有DSP 参数都重置为初始值
+1  vfctrl_usb HPFONOFF   其重新上电后首次打印输出的内容为初始值,
+1  HPFONOFF:3   其他参数使用vfctrl_usb工具读取方式同理
+查阅文档XVF3500-DSP-Databrief的从page 14开始的参数描述中可以获取初始参数
+DSP 参数写入和认证 使用vfctrl_usb 工具进行写入DSP 参数，如键入指令：
+1  vfctrl_usb HPFONOFF 2   PXVF3500-KIT可以实时更改HPFONOFF参数为3，并且打印输出如下，
+1  HPFONOFF:3   键入指令时需要注意空格的输入，同时查阅XVF3500-DSP-Databrief里HPFONOFF描述的的范围为[0..3] ，其值的类型为INT型(整数型)。
+确认写入完成了后，可以使用audaciy或者其他录音软件实时查看vfctril_usb工具修改DSP参数的效果。同时建议使用系统声卡监听功能进行实时侦听修改效果。使用3.5mm耳机插入PC电脑的耳机孔后，参考下图，进行如下操作，
+ 在录音栏项，右键 XMOS VocalFusion St(UAC1.0) -&amp;gt; 点击属性 选中侦听此设备 在通过此设备中播放下拉栏中-&amp;gt;选择PC电脑内置的播放声卡 必须使用耳机插入PC的3.5mm耳机口进行侦听，否正会产生啸叫  DSP 参数简单介绍 HP 高通滤波 XVF3500-DSP-Databrief文档描述的高通滤波器仅有一组参数HPFONOFF，其最高值为是180Hz，如将PXVF3500-KIT作为会议设备（Comms输出）使用，建议设置HPFONOFF为3。如作为语音识别（ASR）,该值可以使用初始值</description>
+      </item>
+      
+      <item>
+        <title>P3510-2MIC_硬件使用</title>
+        <link>http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/</guid>
+        <description>概要 P3510-2MIC是针对XMOS的XK-XVF3510-L71 开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-XVF3510-L71 开发板，所用的DSP芯片为XVF3510.pdf)。XMOS最新更新发布的XVF3510的UA固件完全适用于P3510-2MIC。
+P3510-2MIC为2麦阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（ASR，Automatic Speech Recognition ）和用于会议电话（Comms, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。
+P3510-2MIC内置了立体声回音消除（AEC） , 点噪消除（IC），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入语音产品中。
+版本    产品版本 修改 发布时间     P3510-2MIC V1 初次发布 2020年10月15日    特点   远距离拾音
+  支持USB Audio Class 1.0 (UAC 1.0)
+  支持USB HID 调试
+  2路麦克风阵列
+  支持3.5mm耳机孔作为模拟AEC参考信号
+  DSP 算法和特点
+· Voice Activity Detection(VAD)</description>
+      </item>
+      
+      <item>
+        <title>PXVF3500-KIT_硬件使用</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/</guid>
+        <description>概要 PXVF3500-KIT是针对XMOS的XK-VF3500-L33 开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-VF3500-L33 开发板，所用的DSP芯片为XVF3500。XMOS最新更新发布的XVF3500的固件完全适用于PXVF3500-KIT。
+PXVF3500-KIT为4麦线条型阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（ASR，Automatic Speech Recognition ）和用于会议电话（Comms, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。
+PXVF3500-KIT内置了立体声回音消除（AEC） , 波束程序（BF），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入语音产品中。
+版本    产品版本 修改 发布时间     PXVF3500-KIT v1 初次发布 2018年8月6日    特点   前向180度远距离拾音
+  支持USB Audio Class 1.0 (UAC 1.0)
+  支持USB Control 调试
+  线条型（Linear）4路麦克风阵列
+  支持3.5mm耳机孔作为模拟AEC参考信号
+  支持3.5mm耳机孔作为USB声卡播放
+  DSP 算法和特点</description>
+      </item>
+      
+      <item>
+        <title>公司介绍</title>
+        <link>http://docs.pawpaw.ltd/about/%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/about/%E5%85%AC%E5%8F%B8%E4%BB%8B%E7%BB%8D/</guid>
+        <description>本子系统(docs.pawpaw.ltd)是木瓜电子(www.pawpaw.hk)的文档系统网址的补充，为协助用户对木瓜电子开发的开发板评估板的快速使用而生
+关于我们 深圳市木瓜电子科技有限公司（“木瓜电子”）是一家专注于提供音频技术和音频芯片供应服务的芯片代理商和音频方案商。
+木瓜电子(www.pawpaw.hk)是XMOS的代理商和技术提供商，于2015年，经过多方资源整合打造国内最专业的XMOS技术支持团队，拥有国内最专业的XMOS技术人才，英国XMOS原厂授权麦克风阵列产品线国内唯一的合作伙伴。
+关于XMOS XMOS(www.xmos.ai)是音频领域芯片供应的领导者，专注提供音频接口(USB AUDIO)和音频DSP算法，目前已经成熟向市场提供了XVF3000和XVF3500 4路麦克风阵列，以及XVF3510 2路麦克风阵列完整解决方案，应用语音识别和会议通话等产品中。
+在XMOS网址找到木瓜电子 XMOS网站链接如下可以找到木瓜电子网站入库：https://www.xmos.ai/design-support</description>
+      </item>
+      
+      <item>
+        <title>商务合作</title>
+        <link>http://docs.pawpaw.ltd/about/%E5%95%86%E5%8A%A1%E5%90%88%E4%BD%9C/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/about/%E5%95%86%E5%8A%A1%E5%90%88%E4%BD%9C/</guid>
+        <description>Coming soon</description>
+      </item>
+      
+      <item>
+        <title>工具和应用下载</title>
+        <link>http://docs.pawpaw.ltd/download/%E5%B7%A5%E5%85%B7%E5%92%8C%E5%BA%94%E7%94%A8%E4%B8%8B%E8%BD%BD/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/download/%E5%B7%A5%E5%85%B7%E5%92%8C%E5%BA%94%E7%94%A8%E4%B8%8B%E8%BD%BD/</guid>
+        <description>PXVF3000-KIT
+.PXVF3000-KIT_硬件使用资料包.zip
+P3510-2MIC
+.P3510-2MIC_硬件使用资料包.zip
+PXVF3500-KIT
+Coming soon</description>
+      </item>
+      
+      <item>
+        <title>技术支持</title>
+        <link>http://docs.pawpaw.ltd/about/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/about/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/</guid>
+        <description>Coming soon</description>
+      </item>
+      
+      <item>
+        <title>XVF3500硬件设计</title>
+        <link>http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了pxvf3500-KIT，且查阅pxvf3500-KIT_硬件使用 已详细了解XVF3500 内置的前端算法AEC , BF , NS, AGC,，且已查阅pxvf3500-KIT_dsp_描述 已查阅本站XVF3500项目实施落地 已查阅了XVF3500的datasheet和参考设计 已确认XMOS XVF3500 4路麦克风阵列方案性能可满足导入项目产品中  XVF3500 datasheet 导读 查看XVF3500-FB167-Datasheet_1.2.pdf，其描述的为XVF3500裸片（不含固件）的硬件特性。了解基本的硬件数据，电气特性。
+基本特性  商用温度等级（0 °C to 70 °C） FBGA 167 封装 685mA典型工作电流，1W左右（固件运行） I/O 驱动能力为4mA 订购型号：XVF3500-FB167-C； 丝印：VSM05C  电源 根据datasheet的最小系统框图，XVF3500的需要两路电压供应，3V3和1V0, 其中3V3提供给I/O, USB , Flash等外设使用，1V0提供给XVF3500逻辑核心使用。
+其两路电压时序要求为3V3先上电，稳定后，1V0后上电。
+复位检测 XVF3500需要外部有复位检测芯片，可以选择单独侦测 3V3或者1V0，以避免在电压不正常时，芯片无法复位来运行固件。
+QSPI Flash XVF3500需要外置QSPI Flash（类似GD25Q16或者IS25LP016D），其主要是存储XVF3500固件，所以XVF3500项目得预先烧录固件才能启动运行4路麦克风阵列算法。
+使用QSPI Flash烧录器烧录XVF3500需要配置QE=1的烧录方式。
+BOOT MODE XVF3500的需要读取QSPI Flash芯片程序来启动，根据框图连接XVF3500和Flash时，需要确保QSPI_CS引脚上拉1K电阻，以实现boot mode是由XVF3500芯片读取加载内部的QSPI Flash固件。
+I/O 映射 XVF3500的逻辑I/O接口的功能使用由固件定义，datasheet 无描述I/O 功能使用，需参考木瓜电子或者XMOS官方提供的的原理来选择使用特定的I/O map。
+时钟信号 XVF3500外部需要24MHz有源晶振接入作为启动晶振，接入到CLK 引脚，而音频时钟16KHz 和48KHz采样率仍需要一个外部的12.2888MHz音频时钟或者晶体接入作为I2S或者PDM麦克风的MCLK时钟使用。
+原理图和PCB 根据我司或者XMOS官方的提供的参考原理，结合XVF3500的datasheet最小系统。用户可以比较轻易完成XVF3500的最小系统设计，包含了电源，时钟，启动上拉等。</description>
+      </item>
+      
+    
+  </channel>
+</rss>
